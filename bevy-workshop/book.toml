@@ -1,0 +1,6 @@
+[book]
+authors = ["François"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Bevy Workshop"

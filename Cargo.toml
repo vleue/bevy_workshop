@@ -1,0 +1,29 @@
+[package]
+name = "bevy_workshop"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies.bevy]
+version = "0.15.0-rc.1"
+default-features = false
+features = [
+    "bevy_asset",
+    "bevy_audio",
+    "bevy_core_pipeline",
+    "bevy_gizmos",
+    "bevy_render",
+    "bevy_sprite",
+    "bevy_state",
+    "bevy_text",
+    "bevy_ui",
+    "bevy_winit",
+    "default_font",
+    "multi_threaded",
+    "vorbis",
+    "png",
+    "webgl2",
+    "x11",
+]
+
+[profile.dev.package."*"]
+opt-level = 3
