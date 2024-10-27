@@ -2,9 +2,8 @@
 
 ## Clone the repository
 
-TODO
 ```sh
-git clone ...
+git clone https://github.com/vleue/bevy_workshop
 ```
 
 ## Environment setup
