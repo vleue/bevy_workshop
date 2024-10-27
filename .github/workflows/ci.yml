@@ -19,6 +19,8 @@ jobs:
         mkdir bin
         curl -sSL $url | tar -xz --directory=bin
         echo "$(pwd)/bin" >> $GITHUB_PATH
+    - name: Install Dependencies
+      run: sudo apt-get update; sudo apt-get install pkg-config libx11-dev libasound2-dev libudev-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev
     - name: Build Dependencies
       run: cargo build
     - name: Test Book
