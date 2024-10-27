@@ -59,6 +59,7 @@ fn display_menu(mut commands: Commands) {
         });
 }
 
+#[allow(clippy::type_complexity)]
 fn button_system(
     mut interaction_query: Query<
         (&Interaction, &mut BackgroundColor, &mut BorderColor),
