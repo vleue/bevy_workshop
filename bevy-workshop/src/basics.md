@@ -50,9 +50,9 @@ Helper component to query for specific entities.
 
 ```rust,no_run
 # extern crate bevy;
+# use bevy::prelude::*;
 # #[derive(Component)]
 # struct Player;
-# use bevy::prelude::*;
 fn control_player(
     keyboard_input: Res<ButtonInput<KeyCode>>,
     mut player: Query<&mut Transform, With<Player>>,
@@ -71,6 +71,7 @@ fn control_player(
 
 ```rust,no_run
 # extern crate bevy;
+# use bevy::prelude::*;
 #[derive(Resource)]
 struct GameAssets {
     player_image: Handle<Image>,
@@ -99,11 +100,18 @@ fn load_assets(
 
 ```rust,no_run
 # extern crate bevy;
+# use bevy::prelude::*;
 # #[derive(Resource)]
 # struct GameAssets {
 #     player_image: Handle<Image>,
 #     player_layout: Handle<TextureAtlasLayout>,
 # }
+# #[derive(Component)]
+# struct Player;
+# #[derive(Component)]
+# struct Ground;
+# #[derive(Debug, Clone, Copy, Eq, PartialEq, Hash, States, Default)]
+# enum GameState { #[default] Game }
 fn display_level(mut commands: Commands, assets: Res<GameAssets>) {
     commands.spawn((
         Sprite::from_atlas_image(
