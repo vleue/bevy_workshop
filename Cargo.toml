@@ -24,5 +24,7 @@ features = [
     "x11",
 ]
 
-# [profile.dev.package."*"]
+[profile.dev.package."*"]
+debug-assertions = false
+debug = false
 # opt-level = 3
