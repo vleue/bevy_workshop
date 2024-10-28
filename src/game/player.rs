@@ -32,9 +32,9 @@ fn control_player(
 ) {
     let (mut velocity, is_on_ground) = player.single_mut();
     if is_on_ground.0 || velocity.jumping > 0.0 {
-        if keyboard_input.pressed(KeyCode::ArrowLeft) {
+        if keyboard_input.pressed(KeyCode::KeyA) {
             velocity.target = -5.0;
-        } else if keyboard_input.pressed(KeyCode::ArrowRight) {
+        } else if keyboard_input.pressed(KeyCode::KeyD) {
             velocity.target = 5.0;
         } else {
             velocity.target = 0.0;

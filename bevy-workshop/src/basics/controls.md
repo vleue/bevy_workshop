@@ -10,10 +10,10 @@ fn control_player(
     mut player: Query<&mut Transform, With<Player>>,
 ) {
     let mut player_transform = player.single_mut();
-    if keyboard_input.pressed(KeyCode::ArrowLeft) {
+    if keyboard_input.pressed(KeyCode::KeyA) {
         player_transform.translation.x -= 5.0;
     }
-    if keyboard_input.pressed(KeyCode::ArrowRight) {
+    if keyboard_input.pressed(KeyCode::KeyD) {
         player_transform.translation.x += 5.0;
     }
 }
