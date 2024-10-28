@@ -9,6 +9,7 @@ fn main() {
         .add_plugins(DefaultPlugins.set(WindowPlugin {
             primary_window: Some(Window {
                 title: "Bevy Workshop".into(),
+                canvas: Some("#game".into()),
                 ..default()
             }),
             ..default()
