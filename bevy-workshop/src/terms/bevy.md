@@ -1,5 +1,7 @@
 # Bevy Concepts
 
+## Application
+
 ## World
 
 ## Query
