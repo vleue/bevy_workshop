@@ -9,11 +9,3 @@ At the end, you should have an overview of how Bevy works, and a simple 2d side 
 This workshop is for people wanting to get a better understanding of Bevy basics, with already a good understanding of Rust.
 
 This workshop won't use any third party plugins, and won't go very deep into rendering.
-
-## Full Game in wasm
-
-<canvas id="game">
-<script type="module">
-    import init from './workshop.js'
-    init()
-</script>

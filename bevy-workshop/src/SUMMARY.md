@@ -1,6 +1,7 @@
 # Summary
 
 - [Welcome](./welcome.md)
+- [Target Game](./target.md)
 - [Setup](./setup.md)
 - [Terms](./terms/index.md)
   - [ECS](./terms/ecs.md)
