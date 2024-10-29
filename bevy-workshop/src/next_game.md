@@ -4,6 +4,8 @@
 
 ## Timer
 
+## Win/Lose Screen
+
 ## More than 1 Level
 
 ## Bonus and Powerups
