@@ -15,6 +15,7 @@ fn main() {
             }),
             ..default()
         }))
+        // adding a system executed once on startup
         .add_systems(Startup, display_title)
         .run();
 }

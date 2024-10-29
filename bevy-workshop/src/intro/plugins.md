@@ -17,7 +17,7 @@ fn main() {
         }))
         .init_state::<GameState>()
         .enable_state_scoped_entities::<GameState>()
-        .add_plugins(splash::SplashPlugin)
+        .add_plugins(splash::SplashPlugin)           // adding our new plugin
         .run();
 }
 

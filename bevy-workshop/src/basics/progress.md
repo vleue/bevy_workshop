@@ -9,7 +9,7 @@
   * reading the [`ButtonInput<T>`](https://docs.rs/bevy/0.15.0-rc.2/bevy/input/struct.ButtonInput.html) resource
   * for the input [`KeyCode`](https://docs.rs/bevy/0.15.0-rc.2/bevy/input/keyboard/enum.KeyCode.html)
 * Writing more complex queries, and updating components
-  * the [`With`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/struct.With.html) query filter
+  * the [`With`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/struct.With.html) and [`Without`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/struct.Without.html) query filters
   * and using [`&mut`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/change_detection/struct.Mut.html) to query data mutably
 
 ## Going Further
