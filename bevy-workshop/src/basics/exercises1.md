@@ -1,11 +1,5 @@
 # Exercises
 
-<div class="warning">
-
-Your turn!
-
-</div>
-
 ## Displaying the Ground
 
 File `spritesheet_ground.png` has a spritesheet for the ground.

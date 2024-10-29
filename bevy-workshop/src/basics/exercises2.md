@@ -1,11 +1,5 @@
 # Exercises
 
-<div class="warning">
-
-Your turn!
-
-</div>
-
 ## Jumping
 
 You can change sprite when jumping.
