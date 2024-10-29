@@ -6,7 +6,7 @@ You can change sprite when jumping.
 
 Can you jump only when touching ground? Do you want double jump? The jump height to vary depending on the duration of the button press? Can the player control direction during jump? Those will change the feel of your game.
 
-[Youtube: Why Does Celeste Feel So Good to Play?](https://www.youtube.com/watch?v=yorTG9at90g)
+This video goes into a lot of details about jumps (and movements in general) in Celeste: [Youtube: Why Does Celeste Feel So Good to Play?](https://www.youtube.com/watch?v=yorTG9at90g)
 
 Tips:
 * Split gravity into two systems, one checking if player is on the ground and updating a dedicated component, one handling falling when not on the ground
