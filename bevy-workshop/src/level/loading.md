@@ -29,11 +29,86 @@ LDtk support is not built in, and we won't have time to build a custom editor. L
 
 ```level
 
-    🙂
-  🟩🟩🟩🟩🟩
 
+
+
+
+⬜⬜⬜⬜⬜⬜🙂
+⬜⬜⬜⬜⬜🟩🟩🟩🟩🟩🟩🟩🟩🟩
+```
+
+## Asset Type
+
+```rust
+# extern crate bevy;
+# use bevy::prelude::*;
+#[derive(Asset, TypePath)]
+struct Level {
+    pub tiles: Vec<Vec<Tile>>,
+}
+
+enum Tile {
+    Empty,
+    Ground,
+    Start,
+}
 ```
 
 ## Asset Loader
+
+```rust,edition2021
+# extern crate bevy;
+# extern crate thiserror;
+# use bevy::{asset::{io::Reader, AssetLoader, AsyncReadExt, LoadContext}, prelude::*};
+# use thiserror::Error;
+# #[derive(Asset, TypePath)]
+# struct Level {pub tiles: Vec<Vec<Tile>>}
+# enum Tile {Empty, Ground, Start}
+#[derive(Default)]
+struct LevelLoader;
+
+#[derive(Debug, Error)]
+enum LevelLoaderError {
+    #[error("Could not load asset: {0}")]
+    Io(#[from] std::io::Error),
+    #[error("Unknown tile: {0}")]
+    UnknownTile(char),
+}
+
+impl AssetLoader for LevelLoader {
+    type Asset = Level;
+    type Settings = ();
+    type Error = LevelLoaderError;
+    async fn load(
+        &self,
+        reader: &mut dyn Reader,
+        _settings: &(),
+        _load_context: &mut LoadContext<'_>,
+    ) -> Result<Self::Asset, Self::Error> {
+        let mut buf = String::new();
+        reader.read_to_string(&mut buf).await?;
+
+        let mut tiles = vec![];
+        let mut line = vec![];
+        for char in buf.chars() {
+            match char {
+                '⬜' => line.push(Tile::Empty),
+                '🟩' => line.push(Tile::Ground),
+                '🙂' => line.push(Tile::Start),
+                '\n' => {
+                    tiles.push(line);
+                    line = vec![];
+                }
+                char => Err(LevelLoaderError::UnknownTile(char))?,
+            }
+        }
+        Ok(Level { tiles })
+    }
+
+    fn extensions(&self) -> &[&str] {
+        &["bw"]
+    }
+}
+```
 
 ## Loading the Level

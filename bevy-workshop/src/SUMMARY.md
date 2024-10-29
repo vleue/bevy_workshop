@@ -21,7 +21,7 @@
   - [Basic Physics](./basics/physics.md)
   - [✍️ Exercises](./basics/exercises2.md)
   - [Progress Report](./basics/progress.md)
-- [Level Loading](./level/intro.md)
+- [Level Loading](./level/index.md)
   - [Custom Asset Format](./level/loading.md)
   - [Displaying the Level](./level/display.md)
   - [✍️ Exercises](./level/exercises.md)

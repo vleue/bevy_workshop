@@ -1,6 +1,7 @@
 use bevy::prelude::*;
 
 mod game;
+mod level_loader;
 mod menu;
 mod splash;
 
@@ -16,7 +17,12 @@ fn main() {
         }))
         .init_state::<GameState>()
         .enable_state_scoped_entities::<GameState>()
-        .add_plugins((splash::SplashPlugin, menu::MenuPlugin, game::GamePlugin))
+        .add_plugins((
+            splash::SplashPlugin,
+            level_loader::LevelLoaderPlugin,
+            menu::MenuPlugin,
+            game::GamePlugin,
+        ))
         .run();
 }
 

@@ -3,6 +3,9 @@ name = "bevy_workshop"
 version = "0.1.0"
 edition = "2021"
 
+[dependencies]
+thiserror = "1.0.65"
+
 [dependencies.bevy]
 version = "0.15.0-rc.2"
 default-features = false

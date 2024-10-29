@@ -1175,6 +1175,7 @@ name = "bevy_workshop"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "thiserror",
 ]
 
 [[package]]

@@ -3,14 +3,14 @@
 ## What You've learned
 
 * Loading sprites and displaying them
-  * [the `AssetServer::load` function](https://docs.rs/bevy/0.15.0-rc.2/bevy/asset/struct.AssetServer.html#method.load)
-  * [the `Sprite` component](https://docs.rs/bevy/0.15.0-rc.2/bevy/prelude/struct.Sprite.html)
+  * with the [`AssetServer::load`](https://docs.rs/bevy/0.15.0-rc.2/bevy/asset/struct.AssetServer.html#method.load) function
+  * by adding the [`Sprite`](https://docs.rs/bevy/0.15.0-rc.2/bevy/prelude/struct.Sprite.html) component
 * Handling user input
-  * [`ButtonInput<T>`](https://docs.rs/bevy/0.15.0-rc.2/bevy/input/struct.ButtonInput.html)
-  * [`KeyCode`](https://docs.rs/bevy/0.15.0-rc.2/bevy/input/keyboard/enum.KeyCode.html)
+  * reading the [`ButtonInput<T>`](https://docs.rs/bevy/0.15.0-rc.2/bevy/input/struct.ButtonInput.html) resource
+  * for the input [`KeyCode`](https://docs.rs/bevy/0.15.0-rc.2/bevy/input/keyboard/enum.KeyCode.html)
 * Writing more complex queries, and updating components
-  * [`With` query filter](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/struct.With.html)
-  * [`&mut` to query data mutably](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/change_detection/struct.Mut.html)
+  * the [`With`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/struct.With.html) query filter
+  * and using [`&mut`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/change_detection/struct.Mut.html) to query data mutably
 
 ## Going Further
 
