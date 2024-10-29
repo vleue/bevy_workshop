@@ -66,11 +66,11 @@ fn remove_title(
 
 ## Resources
 
-Used to store singleton in the world, based on their type. See [`Resource`](https://docs.rs/bevy/0.15.0-rc.1/bevy/ecs/prelude/trait.Resource.html).
+Used to store singleton in the world, based on their type. See [`Resource`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/trait.Resource.html).
 
 ## Queries
 
-Used to access entities and their components in the world. Can be filtered. See [`Query`](https://docs.rs/bevy/0.15.0-rc.1/bevy/ecs/prelude/struct.Query.html).
+Used to access entities and their components in the world. Can be filtered. See [`Query`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/struct.Query.html).
 
 ## Mutable VS Immutable Access
 

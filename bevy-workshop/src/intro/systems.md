@@ -57,7 +57,7 @@ Systems in the `Update` schedule are executed every frame. When using vsync, thi
 
 ## Systems
 
-Systems are any function that takes (up to 16) parameters that are [`SystemParam`](https://docs.rs/bevy/0.15.0-rc.1/bevy/ecs/system/trait.SystemParam.html). They are provided at runtime through dependency injection based on their type.
+Systems are any function that takes (up to 16) parameters that are [`SystemParam`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/system/trait.SystemParam.html). They are provided at runtime through dependency injection based on their type.
 
 If you want more details on how this works, you can find them here: [Dependency Injection like Bevy Engine from Scratch](https://promethia-27.github.io/dependency_injection_like_bevy_from_scratch/introductions.html)
 
