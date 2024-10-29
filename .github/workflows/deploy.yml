@@ -29,19 +29,17 @@ jobs:
           echo `pwd`/mdbook >> $GITHUB_PATH
       - name: Install wasm-bindgen
         run: cargo install --force wasm-bindgen-cli
-      - name: Install binaryen
-        run: sudo apt-get install -y binaryen
       - name: Build Book
         run: |
           mdbook build bevy-workshop
       - name: Build wasm game
         run: |
           cargo build --target wasm32-unknown-unknown --release
-          mkdir tmp
-          wasm-bindgen --out-dir tmp/ --out-name workshop --target web target/wasm32-unknown-unknown/release/bevy_workshop.wasm
-          # wasm-opt --converge -Oz tmp/workshop_bg.wasm --output tmp/workshop_bg-opt.wasm
-          # mv tmp/workshop_bg-opt.wasm tmp/workshop_bg.wasm
-          cp tmp/* bevy-workshop/book/
+          wasm-bindgen --out-dir bevy-workshop/book --out-name workshop --target web target/wasm32-unknown-unknown/release/bevy_workshop.wasm
+      - name: Optimize Wasm
+        uses: NiklasEi/wasm-opt-action@v2
+        with:
+          file: bevy-workshop/book/workshop_bg.wasm
       - name: Copy assets
         run: cp -r assets bevy-workshop/book/
       - name: Setup Pages
