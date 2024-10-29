@@ -51,3 +51,13 @@ jobs:
         rustup default stable
     - name: Format
       run: cargo fmt -- --check
+
+  linkChecker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v2
+        with:
+            args: --base bevy-workshop
