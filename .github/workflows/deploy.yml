@@ -39,7 +39,9 @@ jobs:
           cargo build --target wasm32-unknown-unknown --release
           mkdir tmp
           wasm-bindgen --out-dir tmp/ --out-name workshop --target web target/wasm32-unknown-unknown/release/bevy_workshop.wasm
-          wasm-opt -Oz tmp/workshop_bg.wasm --output bevy-workshop/book/workshop.wasm
+          wasm-opt -Oz tmp/workshop_bg.wasm --output tmp/workshop_bg-opt.wasm
+          mv tmp/workshop_bg-opt.wasm tmp/workshop_bg.wasm
+          cp tmp/* bevy-workshop/book/
       - name: Copy assets
         run: cp -r assets bevy-workshop/book/
       - name: Setup Pages
