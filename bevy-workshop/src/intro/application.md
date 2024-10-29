@@ -1,5 +1,7 @@
 # The Application
 
+For now, the goal is to open a window!
+
 ## Empty Application
 
 The most basic application. This will exit immediately when running, and do nothing.

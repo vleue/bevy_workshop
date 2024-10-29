@@ -1,6 +1,6 @@
 # Systems and Schedules
 
-Display a title in the open window.
+It wouldn't be a splash screen if it didn't display anything. Let's show a title in that open window.
 
 ```rust,no_run
 # extern crate bevy;

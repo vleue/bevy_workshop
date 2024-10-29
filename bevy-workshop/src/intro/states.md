@@ -1,5 +1,7 @@
 # States
 
+Bevy has an abstraction and helpers to control systems that are executed depending on the state of the app, aptly named "states".
+
 ```rust,no_run
 # extern crate bevy;
 use bevy::prelude::*;

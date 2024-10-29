@@ -2,7 +2,7 @@
 
 This is an introduction workshop for the [Bevy Engine](https://bevyengine.org).
 
-At the end, you should have an overview of how Bevy works, and a simple 2d side scrolling platformer.
+At the end, you should have an overview of how Bevy works, and a simple 2d platformer.
 
 ## Target Audience
 

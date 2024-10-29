@@ -1,6 +1,6 @@
 # Updating the World
 
-Remove the title after two seconds.
+Another characteristic of splash screen is that they don't stay forever. Let's remove the title after two seconds.
 
 ```rust,no_run
 # extern crate bevy;
@@ -19,9 +19,6 @@ fn main() {
         .add_systems(Update, remove_title)
         .run();
 }
-
-#[derive(Resource)]
-struct SplashScreenTimer(Timer);
 
 fn display_title(mut commands: Commands) {
     commands.spawn(Camera2d);
@@ -49,6 +46,9 @@ fn display_title(mut commands: Commands) {
 
     commands.insert_resource(SplashScreenTimer(Timer::from_seconds(2.0, TimerMode::Once)));
 }
+
+#[derive(Resource)]
+struct SplashScreenTimer(Timer);
 
 fn remove_title(
     time: Res<Time>,

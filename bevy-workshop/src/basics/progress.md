@@ -3,8 +3,14 @@
 ## What You've learned
 
 * Loading sprites and displaying them
+  * [the `AssetServer::load` function](https://docs.rs/bevy/0.15.0-rc.1/bevy/asset/struct.AssetServer.html#method.load)
+  * [the `Sprite` component](https://docs.rs/bevy/0.15.0-rc.1/bevy/prelude/struct.Sprite.html)
 * Handling user input
+  * [`ButtonInput<T>`](https://docs.rs/bevy/0.15.0-rc.1/bevy/input/struct.ButtonInput.html)
+  * [`KeyCode`](https://docs.rs/bevy/0.15.0-rc.1/bevy/input/keyboard/enum.KeyCode.html)
 * Writing more complex queries, and updating components
+  * [`With` query filter](https://docs.rs/bevy/0.15.0-rc.1/bevy/ecs/prelude/struct.With.html)
+  * [`&mut` to query data mutably](https://docs.rs/bevy/0.15.0-rc.1/bevy/ecs/change_detection/struct.Mut.html)
 
 ## Going Further
 

@@ -1,3 +1,3 @@
 # Terms
 
-We'll go through some terms used in Bevy. They'll be reused later in the workshop.
+In this section, we will explore key terms and concepts used in Bevy. We'll go in more depth into how they are used through the workshop.

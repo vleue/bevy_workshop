@@ -1,4 +1,4 @@
-# Displaying Someting
+# Displaying Something
 
 ```rust,no_run
 # extern crate bevy;
