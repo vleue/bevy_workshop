@@ -5,7 +5,7 @@ use bevy::{
 
 use crate::GameState;
 
-use super::{Ground, IsOnGround, Player, Velocity};
+use super::{AgainstWall, Ground, IsOnGround, Player, Velocity};
 
 pub struct PlayerPlugin;
 
@@ -46,11 +46,12 @@ fn control_player(
 }
 
 fn on_ground(
-    mut player: Query<(&Transform, &mut IsOnGround), With<Player>>,
+    mut player: Query<(&Transform, &mut IsOnGround, &mut AgainstWall), With<Player>>,
     ground: Query<&Transform, (Without<Player>, With<Ground>)>,
 ) {
     let mut is_on_ground = false;
-    let (player_transform, mut player_on_ground) = player.single_mut();
+    let mut is_against_wall = (false, false);
+    let (player_transform, mut player_on_ground, mut player_against_wall) = player.single_mut();
 
     let player_aabb = Aabb2d::new(
         Vec2::new(
@@ -76,11 +77,25 @@ fn on_ground(
         );
 
         if ground_aabb.intersects(&player_aabb) {
-            is_on_ground = true;
+            if ground_transform.translation.y > player_transform.translation.y - 34.0 {
+                if ground_transform.translation.x < player_transform.translation.x {
+                    is_against_wall.0 = true;
+                } else {
+                    is_against_wall.1 = true;
+                }
+            } else {
+                is_on_ground = true;
+            }
         }
     }
     if is_on_ground != player_on_ground.0 {
         player_on_ground.0 = is_on_ground;
+    }
+    if is_against_wall.0 != player_against_wall.0 {
+        player_against_wall.0 = is_against_wall.0;
+    }
+    if is_against_wall.1 != player_against_wall.1 {
+        player_against_wall.1 = is_against_wall.1;
     }
 }
 
@@ -92,8 +107,8 @@ fn gravity(mut player: Query<(&mut Transform, &IsOnGround), With<Player>>) {
     }
 }
 
-fn moving(mut player: Query<(&mut Transform, &mut Velocity), With<Player>>) {
-    let (mut player_transform, mut velocity) = player.single_mut();
+fn moving(mut player: Query<(&mut Transform, &mut Velocity, &AgainstWall), With<Player>>) {
+    let (mut player_transform, mut velocity, against_wall) = player.single_mut();
 
     if velocity.jumping > 0.0 {
         player_transform.translation.y += velocity.jumping;
@@ -101,6 +116,12 @@ fn moving(mut player: Query<(&mut Transform, &mut Velocity), With<Player>>) {
     }
 
     if velocity.current != 0.0 {
+        if against_wall.0 && velocity.current < 0.0 {
+            velocity.current = 0.0;
+        }
+        if against_wall.1 && velocity.current > 0.0 {
+            velocity.current = 0.0;
+        }
         player_transform.translation.x += velocity.current;
     }
     if velocity.current != velocity.target {

@@ -17,11 +17,14 @@ impl Plugin for GamePlugin {
 }
 
 #[derive(Component)]
-#[require(IsOnGround, Velocity)]
+#[require(IsOnGround, Velocity, AgainstWall)]
 struct Player;
 
 #[derive(Component, Default)]
 struct IsOnGround(bool);
+
+#[derive(Component, Default)]
+struct AgainstWall(bool, bool);
 
 #[derive(Component, Default)]
 struct Velocity {
