@@ -23,7 +23,7 @@ Tips:
 
 ## Player Acceleration
 
-Make the player acceletare and decelerate instead of directly changing it's position when a key is pressed.
+Make the player accelerate and decelerate instead of directly changing it's position when a key is pressed.
 
 Tips:
 * Store the player current velocity and target velocity in a new component
