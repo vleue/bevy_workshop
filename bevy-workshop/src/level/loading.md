@@ -50,7 +50,6 @@ struct Level {
 enum Tile {
     Empty,
     Ground,
-    Start,
 }
 ```
 
@@ -63,7 +62,7 @@ enum Tile {
 # use thiserror::Error;
 # #[derive(Asset, TypePath)]
 # struct Level {pub tiles: Vec<Vec<Tile>>}
-# enum Tile {Empty, Ground, Start}
+# enum Tile {Empty, Ground}
 #[derive(Default)]
 struct LevelLoader;
 
@@ -94,7 +93,6 @@ impl AssetLoader for LevelLoader {
             match char {
                 '⬜' => line.push(Tile::Empty),
                 '🟩' => line.push(Tile::Ground),
-                '🙂' => line.push(Tile::Start),
                 '\n' => {
                     tiles.push(line);
                     line = vec![];

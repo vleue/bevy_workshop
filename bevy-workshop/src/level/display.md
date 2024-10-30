@@ -5,7 +5,7 @@
 # use bevy::prelude::*;
 # #[derive(Asset, TypePath)]
 # struct Level {pub tiles: Vec<Vec<Tile>>}
-# enum Tile {Empty, Ground, Start}
+# enum Tile {Empty, Ground}
 # #[derive(Resource)]
 # struct GameAssets {
 #     player_image: Handle<Image>,
@@ -58,20 +58,6 @@ fn display_tile(
                 StateScoped(GameState::Game),
             ));
         }
-        Tile::Start => {
-            commands.spawn((
-                Sprite::from_atlas_image(
-                    assets.player_image.clone(),
-                    TextureAtlas {
-                        layout: assets.player_layout.clone(),
-                        index: 0,
-                    },
-                ),
-                Transform::from_xyz(x, y + 32.0, 0.0).with_scale(Vec3::splat(0.5)),
-                StateScoped(GameState::Game),
-                Player,
-            ));
-        }
         Tile::Empty => {}
     }
 }
@@ -90,5 +76,18 @@ fn display_level(
             display_tile(&mut commands, tile, i, x, y, line, &assets);
         }
     }
+
+    commands.spawn((
+        Sprite::from_atlas_image(
+            assets.player_image.clone(),
+            TextureAtlas {
+                layout: assets.player_layout.clone(),
+                index: 0,
+            },
+        ),
+        Transform::from_xyz(0.0, 200.0, 0.0).with_scale(Vec3::splat(0.5)),
+        StateScoped(GameState::Game),
+        Player,
+    ));
 }
 ```
