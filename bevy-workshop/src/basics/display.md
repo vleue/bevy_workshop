@@ -35,6 +35,7 @@ fn display_level(mut commands: Commands) {
     ));
 }
 ```
+
 <div class="warning">
 
 Don't forget to add the new `GamePlugin` to the app in the `main.rs` file.

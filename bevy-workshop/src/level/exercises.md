@@ -2,7 +2,7 @@
 
 ## Handle the Player Starting Position
 
-Spawn the player where there's a smiley
+Spawn the player where there's a smiley 🙂
 
 Tips:
 * Return an error if there's more than one 🙂 in the level

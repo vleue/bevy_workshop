@@ -1,31 +1,8 @@
 # Custom Asset Format
 
-## Asset Format
+## Level Format: The Quick and Dirty Way
 
-### Use an Existing Level Editor
-
-For a real project, I strongly recommend [LDtk](https://ldtk.io) (Level Designer toolkit).
-
-### Build Your Own Level Editor
-
-If you have some custom needs, or want complete control, you can build your own level editor that would output the level is some parsable format, for example:
-
-```json
-{
-    "platforms": [
-        {
-            "start": 3,
-            "end": 7,
-            "height": 2
-        }
-    ],
-    "start": [4, 3],
-}
-```
-
-### The Quick and Dirty Way
-
-LDtk support is not built in, and we won't have time to build a custom editor. Let's go with a basic format that you can manually edit with a good idea of how it should render: emojis to the rescue!
+Let's go with a basic format that you can manually edit with a good idea of how it should render: emojis to the rescue!
 
 ```level
 ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜
@@ -42,6 +19,8 @@ LDtk support is not built in, and we won't have time to build a custom editor. L
 
 ## Asset Type
 
+To match the basic level format, we'll use a basic type that will just be a vec of vecs of tiles. The struct must derive the [`Asset`](https://docs.rs/bevy/0.15.0-rc.2/bevy/asset/trait.Asset.html) trait.
+
 ```rust
 # extern crate bevy;
 # use bevy::prelude::*;
@@ -57,6 +36,8 @@ enum Tile {
 ```
 
 ## Asset Loader
+
+To load this format, we'll read the file character by character, then choose the right tile depending on the character. Bevy expects custom asset loader to implement the trait [`AssetLoader`](https://docs.rs/bevy/0.15.0-rc.2/bevy/asset/trait.AssetLoader.html).
 
 ```rust,edition2021
 # extern crate bevy;
@@ -114,3 +95,65 @@ impl AssetLoader for LevelLoader {
 ```
 
 ## Loading the Level
+
+Custom asset formats and loaders must be initiated in the application with [`App::init_asset`](https://docs.rs/bevy/0.15.0-rc.2/bevy/app/struct.App.html#method.init_asset) and [`App::init_asset_loader`](https://docs.rs/bevy/0.15.0-rc.2/bevy/asset/trait.AssetApp.html#tymethod.init_asset_loader). We can wrap that in a plugin.
+
+```rust,edition2021
+# extern crate bevy;
+# extern crate thiserror;
+# use bevy::{asset::{io::Reader, AssetLoader, AsyncReadExt, LoadContext}, prelude::*};
+# use thiserror::Error;
+# #[derive(Asset, TypePath)]
+# struct Level {pub tiles: Vec<Vec<Tile>>}
+# enum Tile {Empty, Ground}
+# #[derive(Default)]
+# struct LevelLoader;
+# #[derive(Debug, Error)]
+# enum LevelLoaderError {}
+# impl AssetLoader for LevelLoader {
+#     type Asset = Level;
+#     type Settings = ();
+#     type Error = LevelLoaderError;
+#     async fn load(&self, reader: &mut dyn Reader, _settings: &(), _load_context: &mut LoadContext<'_>) -> Result<Self::Asset, Self::Error> { unimplemented!() }
+#     fn extensions(&self) -> &[&str] { &["bw"] }
+# }
+pub struct LevelLoaderPlugin;
+
+impl Plugin for LevelLoaderPlugin {
+    fn build(&self, app: &mut App) {
+        app.init_asset::<Level>().init_asset_loader::<LevelLoader>();
+    }
+}
+```
+
+<div class="warning">
+
+Don't forget to add the new `LevelLoaderPlugin` to the app in the `main.rs` file.
+
+</div>
+
+Now we can load the asset file like the sprites we're already using, and keeping the handle to the loaded level in a resource.
+
+```rust
+# extern crate bevy;
+# use bevy::{asset::{io::Reader, AssetLoader, AsyncReadExt, LoadContext}, prelude::*};
+# #[derive(Asset, TypePath)]
+# struct Level {pub tiles: Vec<Vec<Tile>>}
+# enum Tile {Empty, Ground}
+#[derive(Resource)]
+pub struct LoadedLevel {
+    pub level: Handle<Level>,
+}
+
+fn load_assets(
+    mut commands: Commands,
+    asset_server: Res<AssetServer>,
+    // ...
+) {
+    commands.insert_resource(LoadedLevel {
+        level: asset_server.load("level.bw"),
+    });
+    // ...
+}
+
+```
