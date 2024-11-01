@@ -89,6 +89,20 @@ fn display_tile(
                 Player,
             ));
         }
+        Tile::End => {
+            commands.spawn((
+                Sprite::from_atlas_image(
+                    assets.player_image.clone(),
+                    TextureAtlas {
+                        layout: assets.player_layout.clone(),
+                        index: 0,
+                    },
+                ),
+                Transform::from_xyz(x, y, 0.0).with_scale(Vec3::splat(SCALE)),
+                StateScoped(GameState::Game),
+                Player,
+            ));
+        }
         Tile::Empty => {}
     }
 }

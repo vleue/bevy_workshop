@@ -27,6 +27,7 @@ pub enum Tile {
     Empty,
     Ground,
     Start,
+    End,
 }
 
 #[derive(Default)]
@@ -60,6 +61,7 @@ impl AssetLoader for LevelLoader {
                 '⬜' => line.push(Tile::Empty),
                 '🟩' => line.push(Tile::Ground),
                 '🙂' => line.push(Tile::Start),
+                '🏁' => line.push(Tile::End),
                 '\n' => {
                     tiles.push(line);
                     line = vec![];
