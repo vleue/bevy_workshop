@@ -1,4 +1,6 @@
-use bevy::prelude::*;
+use std::time::Duration;
+
+use bevy::{prelude::*, time::common_conditions::on_timer};
 
 use crate::{
     level_loader::{Level, LoadedLevel, Tile},
@@ -14,7 +16,11 @@ pub struct GamePlugin;
 impl Plugin for GamePlugin {
     fn build(&self, app: &mut App) {
         app.add_plugins(player::PlayerPlugin)
-            .add_systems(OnEnter(GameState::Game), display_level);
+            .add_systems(OnEnter(GameState::Game), display_level)
+            .add_systems(
+                Update,
+                animate_level.run_if(on_timer(Duration::from_secs_f32(0.25))),
+            );
     }
 }
 
@@ -37,6 +43,9 @@ struct Velocity {
 
 #[derive(Component)]
 struct Ground;
+
+#[derive(Component)]
+struct Flag;
 
 fn ground_tile_index(line: &[Tile], i: usize) -> usize {
     match (
@@ -92,15 +101,15 @@ fn display_tile(
         Tile::End => {
             commands.spawn((
                 Sprite::from_atlas_image(
-                    assets.player_image.clone(),
+                    assets.items_image.clone(),
                     TextureAtlas {
-                        layout: assets.player_layout.clone(),
-                        index: 0,
+                        layout: assets.items_layout.clone(),
+                        index: 6,
                     },
                 ),
                 Transform::from_xyz(x, y, 0.0).with_scale(Vec3::splat(SCALE)),
                 StateScoped(GameState::Game),
-                Player,
+                Flag,
             ));
         }
         Tile::Empty => {}
@@ -122,6 +131,17 @@ fn display_level(
                 -(j as f32 - 5.0) * 128.0 * SCALE,
             );
             display_tile(&mut commands, tile, i, x, y, line, &assets);
+        }
+    }
+}
+
+fn animate_level(mut flags: Query<&mut Sprite, With<Flag>>) {
+    for mut flag in &mut flags {
+        let atlas = flag.texture_atlas.as_mut().unwrap();
+        if atlas.index == 6 {
+            atlas.index = 12;
+        } else {
+            atlas.index = 6;
         }
     }
 }

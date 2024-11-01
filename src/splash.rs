@@ -77,5 +77,13 @@ fn load_assets(
             None,
             None,
         )),
+        items_image: asset_server.load("spritesheet_items.png"),
+        items_layout: texture_atlas_layouts.add(TextureAtlasLayout::from_grid(
+            UVec2::new(128, 128),
+            6,
+            4,
+            None,
+            None,
+        )),
     });
 }
