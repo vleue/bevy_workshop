@@ -77,7 +77,9 @@ fn on_ground(
         );
 
         if ground_aabb.intersects(&player_aabb) {
-            if ground_transform.translation.y > player_transform.translation.y - 34.0 {
+            if ground_transform.translation.y
+                > player_transform.translation.y - 256.0 / 4.0 * player_transform.scale.y - 2.0
+            {
                 if ground_transform.translation.x < player_transform.translation.x {
                     is_against_wall.0 = true;
                 } else {

@@ -7,6 +7,8 @@ use crate::{
 
 mod player;
 
+const SCALE: f32 = 0.5;
+
 pub struct GamePlugin;
 
 impl Plugin for GamePlugin {
@@ -68,7 +70,7 @@ fn display_tile(
                         index,
                     },
                 ),
-                Transform::from_xyz(x, y, 0.0).with_scale(Vec3::splat(0.5)),
+                Transform::from_xyz(x, y, 0.0).with_scale(Vec3::splat(SCALE)),
                 Ground,
                 StateScoped(GameState::Game),
             ));
@@ -82,7 +84,7 @@ fn display_tile(
                         index: 0,
                     },
                 ),
-                Transform::from_xyz(x, y + 32.0, 0.0).with_scale(Vec3::splat(0.5)),
+                Transform::from_xyz(x, y + 256.0 / 4.0 * SCALE, 0.0).with_scale(Vec3::splat(SCALE)),
                 StateScoped(GameState::Game),
                 Player,
             ));
@@ -101,7 +103,10 @@ fn display_level(
 
     for (j, line) in level.tiles.iter().enumerate() {
         for (i, tile) in line.iter().enumerate() {
-            let (x, y) = ((i as f32 - 9.0) * 64.0, -(j as f32 - 5.0) * 64.0);
+            let (x, y) = (
+                (i as f32 - 9.0) * 128.0 * SCALE,
+                -(j as f32 - 5.0) * 128.0 * SCALE,
+            );
             display_tile(&mut commands, tile, i, x, y, line, &assets);
         }
     }
