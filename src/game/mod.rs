@@ -93,7 +93,7 @@ fn display_tile(
                         index: 0,
                     },
                 ),
-                Transform::from_xyz(x, y + 256.0 / 4.0 * SCALE, 0.0).with_scale(Vec3::splat(SCALE)),
+                Transform::from_xyz(x, y + 256.0 / 4.0 * SCALE, 2.0).with_scale(Vec3::splat(SCALE)),
                 StateScoped(GameState::Game),
                 Player,
             ));
@@ -107,7 +107,7 @@ fn display_tile(
                         index: 6,
                     },
                 ),
-                Transform::from_xyz(x, y, 0.0).with_scale(Vec3::splat(SCALE)),
+                Transform::from_xyz(x, y, 1.0).with_scale(Vec3::splat(SCALE)),
                 StateScoped(GameState::Game),
                 Flag,
             ));
