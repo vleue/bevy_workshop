@@ -1,6 +1,6 @@
 # Exercises
 
-## Falling
+## Falling to Death
 
 Make the game go back to the menu when the player fall offscreen.
 

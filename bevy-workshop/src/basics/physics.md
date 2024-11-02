@@ -1,5 +1,9 @@
 # Basic Physics
 
+It wouldn't be a platformer if you can't fall. Let's add some "gravity" to the game.
+
+We'll compute an Axis Aligned Bounding Box (or AABB) for the player and the ground, and check for intersections. If there's one, then the player is on the ground. Otherwise, the player is in the air, then move its position down to simulate falling.
+
 ```rust,no_run
 # extern crate bevy;
 # #[derive(Component)]

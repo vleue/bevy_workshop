@@ -1,5 +1,7 @@
 # Displaying Something
 
+We'll just display block of colors for now, as a placeholder. Red is the player, green is the ground.
+
 ```rust,no_run
 # extern crate bevy;
 # #[derive(Debug, Clone, Copy, Eq, PartialEq, Hash, States, Default)]
