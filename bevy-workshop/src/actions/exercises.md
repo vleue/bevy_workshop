@@ -8,10 +8,24 @@ Tips:
 * Look for every `from_xyz` and replace the third value by a different index
 * Ground in the back, then flag, then player in the front
 
+## Switches
+
+Add a switch zone that enables the flag in the level.
+
+Tips:
+* Create a new tile in the level and display it
+* Start with the flag disabled
+    * Add a `bool` to the component: `Flag(bool)`
+    * When `false`, don't trigger winning when reaching the flag
+* When getting near the switch, change the `Flag` component to `true`
+* You can use different sprites to show whether the flag is enabled or not
+
 ## PowerUps
 
 Add an item to pick up that change how the player jumps.
 
-## Switches
-
-Add a switch zone that enables something else in the level.
+Tips:
+* Create a new tile in the level and display it
+* When getting near the powerup, add a new component to the player
+* In the system controlling player jumps, query for the optional component
+* If the component is present, change how jumping behaves
