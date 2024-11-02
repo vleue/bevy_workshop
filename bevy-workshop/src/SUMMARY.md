@@ -27,6 +27,7 @@
   - [✍️ Exercises](./level/exercises.md)
   - [Progress Report](./level/progress.md)
 - [Action Zones](./actions/index.md)
+  - [Adding a Winning Zone](./actions/adding.md)
   - [Winning the Game](./actions/winning.md)
   - [✍️ Exercises](./actions/exercises.md)
   - [Progress Report](./actions/progress.md)
