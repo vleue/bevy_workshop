@@ -15,3 +15,7 @@ To start with Rust, you can check out these free resources:
 * [Rust Exercises](https://rust-exercises.com): 100 Exercises To Learn Rust
 
 This workshop won't use any third party plugins, and won't go very deep into rendering.
+
+## Credits
+
+Assets used are from [Kenney's Platformer Pack Redux](https://kenney.nl/assets/platformer-pack-redux).
