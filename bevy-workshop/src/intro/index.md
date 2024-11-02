@@ -1,8 +1,8 @@
 # Introduction to Bevy
 
-We'll start our game with a splash screen. For that, we will:
+We'll start our game with a splash screen. To achieve this, we will:
 * Create a new Bevy application
 * Add the default plugins
-* Create a first system to spawn entities with components
-* Use states to reduce boilerplate
-* Refactor our code with plugins
+* Build a system to spawn entities with components
+* Use states to reduce boilerplate code
+* Refactor our code using plugins
