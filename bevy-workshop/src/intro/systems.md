@@ -1,6 +1,6 @@
 # Systems and Schedules
 
-It wouldn't be a splash screen if it didn't display anything. Let's show a title in that open window.
+A splash screen needs to display something, so let's show a title in the open window.
 
 ```rust,no_run
 # extern crate bevy;
@@ -15,7 +15,7 @@ fn main() {
             }),
             ..default()
         }))
-        // adding a system executed once on startup
+        // add a system that executes once at startup
         .add_systems(Startup, display_title)
         .run();
 }
@@ -48,26 +48,26 @@ fn display_title(mut commands: Commands) {
 
 ## Schedules
 
-The `Startup` schedule is for things that must happens only once during application startup.
+The `Startup` schedule is used for tasks that need to occur only once during application startup.
 
-Other common schedules to use are `PreUpdate`, `Update` and `PostUpdate`. They have their fixed counter parts `FixedPreUpdate`, `FixedUpdate` and `FixedPostUpdate`.
+Other common schedules include `PreUpdate`, `Update`, and `PostUpdate`, along with their fixed counterparts: `FixedPreUpdate`, `FixedUpdate`, and `FixedPostUpdate`.
 
-Systems in the `Update` schedule are executed every frame. When using vsync, this is driven by your screen, most common case is 60fps, macs are often on 120fps. Systems in the `FixedUpdate` schedule are executed at a configurable and fixed frequency, by default 64Hz. Most of your game logic should happen in those schedules.
+Systems in the `Update` schedule execute every frame. With vsync enabled, this is typically driven by your screen's refresh rate, commonly 60fps, with some Macs running at 120fps. Systems in the `FixedUpdate` schedule execute at a configurable, fixed frequency, defaulting to 64Hz. Most game logic should occur within these schedules.
 
-`Pre*` and `Post*` schedules are useful to do preparation and cleanup/propagation around game logic.
+`Pre*` and `Post*` schedules are useful for preparation and cleanup/propagation tasks surrounding game logic.
 
 ## Systems
 
-Systems are any function that takes (up to 16) parameters that are [`SystemParam`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/system/trait.SystemParam.html). They are provided at runtime through dependency injection based on their type.
+Systems are functions that accept up to 16 parameters, each of which must implement the [`SystemParam`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/system/trait.SystemParam.html) trait. These parameters are provided at runtime through dependency injection based on their type.
 
 If you want more details on how this works, you can find them here: [Dependency Injection like Bevy Engine from Scratch](https://promethia-27.github.io/dependency_injection_like_bevy_from_scratch/introductions.html)
 
 ## Commands
 
-Commands are the main way to change the game world, either by adding, mutating or removing entities and components.
+Commands are the primary means of modifying the game world, allowing you to add, mutate, or remove entities and components. They are not executed straight away, but at sync points between systems.
 
 ## Side note: UI
 
-The startup system in the example above spawn text. It first spawn a node entity that is pretty much the equivalent of a `<div>` HTML tag, used to center the text, then as a children the text itself.
+The startup system in the example above spawns text. It first spawns a node entity, which functions similarly to a `<div>` HTML tag, used to center the text, and then spawns the text itself as a child.
 
-The two layout types available in Bevy for the UI are Flexbox and CSS Grids.
+Bevy offers two layout types for UI: Flexbox and CSS Grids.

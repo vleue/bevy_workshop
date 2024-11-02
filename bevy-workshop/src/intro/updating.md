@@ -1,6 +1,6 @@
 # Updating the World
 
-Another characteristic of splash screen is that they don't stay forever. Let's remove the title after two seconds.
+A key characteristic of a splash screen is that it doesn't stay forever. Let's remove the title after two seconds.
 
 ```rust,no_run
 # extern crate bevy;
@@ -66,20 +66,20 @@ fn remove_title(
 
 ## Resources
 
-Used to store singleton in the world, based on their type. See [`Resource`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/trait.Resource.html).
+Resources are used to store singletons in the world, based on their type. See [`Resource`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/trait.Resource.html).
 
-Here we're adding a resource `SplashScreenTimer` that will just hold a `Timer`.
+Here, we're adding a resource `SplashScreenTimer` that simply holds a `Timer`.
 
 ## Queries
 
-Used to access entities and their components in the world. Can be filtered. See [`Query`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/struct.Query.html).
+Queries are used to access entities and their components in the world and can be filtered. See [`Query`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/struct.Query.html).
 
-In the `remove_title` system, we're using a `Query` that only request access to the [`Entity`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/entity/struct.Entity.html), filtering on the component [`Node`](https://docs.rs/bevy/0.15.0-rc.2/bevy/prelude/struct.Node.html) which is a basic component shared between all elements in the UI.
+In the `remove_title` system, we're using a `Query` that requests access only to the [`Entity`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/entity/struct.Entity.html), filtering on the component [`Node`](https://docs.rs/bevy/0.15.0-rc.2/bevy/prelude/struct.Node.html), which is a basic component shared among all UI elements.
 
-## Mutable VS Immutable Access
+## Mutable vs. Immutable Access
 
 The `remove_title` system accesses two resources:
-* [`Time`](https://docs.rs/bevy/0.15.0-rc.2/bevy/prelude/struct.Time.html), provided by Bevy, in a immutable way
-* `SplashScreenTimer`, our custom resource, in a mutable way; The timer in this resource will be ticked, so we need to be able to modify it
+* [`Time`](https://docs.rs/bevy/0.15.0-rc.2/bevy/prelude/struct.Time.html), provided by Bevy, in an immutable way
+* `SplashScreenTimer`, our custom resource, in a mutable way; the timer in this resource will be ticked, so we need to modify it
 
-As the world continue to hold ownership of data, systems have access to references. Only one system accessing a given part of the world mutably can run at a single time. Systems that access different part mutable, or the same part immutably can run in parallel.
+As the world continues to hold ownership of data, systems have access to references. Only one system accessing a given part of the world mutably can run at a time. Systems that access different parts mutably, or the same parts immutably, can run in parallel.

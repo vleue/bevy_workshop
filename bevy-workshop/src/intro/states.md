@@ -1,6 +1,6 @@
 # States
 
-Bevy has an abstraction and helpers to control systems that are executed depending on the state of the app, aptly named "states".
+Bevy provides an abstraction and helpers to control systems that execute based on the application's state, aptly named "states."
 
 ```rust,no_run
 # extern crate bevy;
@@ -72,14 +72,14 @@ fn switch_to_menu(
 }
 ```
 
-## Schedules Based on State
+## State-Based Schedules
 
-Additional schedules are available when using state: `OnEnter`, `OnExit` and `OnTransition`.
+When using states, additional schedules are available: `OnEnter`, `OnExit`, and `OnTransition`.
 
-## Changing State
+## Changing States
 
-Using a resource `NextState`.
+States can be changed using the `NextState` resource.
 
-## State Scopped Entities
+## State-Scoped Entities
 
-By adding a component `StateScoped`, all entities and their hierarchy marked by this component will be despawned when exiting the state.
+By adding the `StateScoped` component, all entities and their hierarchy marked with this component will be despawned when exiting the state.

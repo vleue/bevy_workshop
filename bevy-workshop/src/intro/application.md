@@ -1,10 +1,10 @@
 # The Application
 
-For now, the goal is to open a window!
+The initial goal is to open a window using Bevy!
 
 ## Empty Application
 
-The most basic application. This will exit immediately when running, and do nothing.
+This is the most basic Bevy application. It will exit immediately upon running and perform no actions.
 
 ```rust
 # extern crate bevy;
@@ -17,7 +17,7 @@ fn main() {
 
 ## Default Bevy Plugins
 
-Default plugins are added to handle windowing, rendering, input, audio, ... are added. This application opens a windows then does nothing.
+Default plugins are added to handle windowing, rendering, input, audio, and more. This application opens a window and then does nothing.
 
 ```rust,no_run
 # extern crate bevy;
@@ -30,7 +30,7 @@ fn main() {
 }
 ```
 
-Plugins can be configured, in this case to give a name to the window.
+Plugins can be configured; in this example, we set a custom title for the window.
 
 ```rust,no_run
 # extern crate bevy;
