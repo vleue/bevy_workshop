@@ -49,6 +49,7 @@ fn control_player(
 fn on_ground(
     mut player: Query<(&Transform, &mut IsOnGround, &mut AgainstWall), With<Player>>,
     ground: Query<&Transform, (Without<Player>, With<Ground>)>,
+    #[cfg(feature = "debug")] mut gizmos: Gizmos,
 ) {
     let mut is_on_ground = false;
     let mut is_against_wall = (false, false);
@@ -57,13 +58,24 @@ fn on_ground(
     let player_aabb = Aabb2d::new(
         Vec2::new(
             player_transform.translation.x,
-            player_transform.translation.y,
+            player_transform.translation.y - 128.0 / 4.0,
         ),
         Vec2::new(
             128.0 * player_transform.scale.x,
-            256.0 * player_transform.scale.y,
-        ) / 2.0,
+            (256.0 * 5.0 / 8.0) * player_transform.scale.y,
+        ) / 2.0
+            * 0.8,
     );
+
+    #[cfg(feature = "debug")]
+    {
+        use bevy::math::bounding::BoundingVolume;
+        gizmos.rect_2d(
+            player_aabb.center(),
+            player_aabb.half_size() * 2.,
+            Color::srgb(1.0, 0.0, 0.0),
+        );
+    }
 
     for ground_transform in &ground {
         let ground_aabb = Aabb2d::new(
@@ -166,7 +178,7 @@ fn death_by_fall(
     player_transform: Query<&Transform, With<Player>>,
 ) {
     let player_transform = player_transform.single();
-    if player_transform.translation.y < -300.0 {
+    if player_transform.translation.y < -400.0 {
         next.set(GameState::Menu);
     }
 }

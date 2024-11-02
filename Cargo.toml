@@ -27,6 +27,9 @@ features = [
     "x11",
 ]
 
+[features]
+debug = ["bevy/bevy_gizmos"]
+
 [profile.dev.package."*"]
 debug-assertions = false
 debug = false
