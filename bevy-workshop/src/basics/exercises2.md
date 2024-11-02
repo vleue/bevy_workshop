@@ -1,5 +1,12 @@
 # Exercises
 
+## Falling
+
+Make the game go back to the menu when the player fall offscreen.
+
+Tips:
+* Check if the position of the player is below a certain threshold. Then change state to go back to the menu.
+
 ## Jumping
 
 You can change sprite when jumping.
@@ -13,10 +20,3 @@ Tips:
     * You'll need to keep the "falling" system running *after* the "on_ground" system
 * Add a new component `JumpSpeed(f32)`. When the player jumps, set the value to something higher than gravity (`10.0` in the example above). While the player is jumping, decrease this value until it reaches `0.0`
 * If you did the "Player Acceleration" exercise, they can share component and systems
-
-## Falling
-
-Make the game go back to the menu when the player fall offscreen.
-
-Tips:
-* Check if the position of the player is below a certain threshold. Then change state to go back to the menu.
