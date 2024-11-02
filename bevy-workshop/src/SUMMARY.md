@@ -31,7 +31,7 @@
   - [Winning the Game](./actions/winning.md)
   - [✍️ Exercises](./actions/exercises.md)
   - [Progress Report](./actions/progress.md)
-- [Sound effects](./sound/index.md)
+- [Sound Effects](./sound/index.md)
   - [Jumping](./sound/jumping.md)
   - [✍️ Exercises](./sound/exercises.md)
   - [Progress Report](./sound/progress.md)
