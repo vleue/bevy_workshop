@@ -9,3 +9,9 @@ At the end, you should have an overview of how Bevy works, and a simple 2d platf
 This workshop is for people wanting to get a better understanding of Bevy basics, with already a good understanding of Rust.
 
 This workshop won't use any third party plugins, and won't go very deep into rendering.
+
+To start with Rust, you can check out these free resources:
+* [The Rust Programming Language](https://doc.rust-lang.org/book/): an introductory book about Rust
+* [Comprehensive Rust](https://google.github.io/comprehensive-rust/): This course covers the full spectrum of Rust, from basic syntax to advanced topics like generics and error handling
+* [Rustlings](https://rustlings.cool): Small exercises to get you used to reading and writing Rust code
+* [Rust Exercises](https://rust-exercises.com): 100 Exercises To Learn Rust
