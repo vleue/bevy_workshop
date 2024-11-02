@@ -4,12 +4,12 @@
 
 By adding a new emoji to our level, we can add something new. Let's add a winning zone with a 🏁 emoji.
 
-First we'll add a new variant to the `Tile` enum: `End`:
+First we'll add a new variant to the `Tile` enum: `Flag`:
 
 ```rust
 pub enum Tile {
     // ...
-    End,
+    Flag,
 }
 ```
 
@@ -21,7 +21,7 @@ Then parse it in our `LevelLoader`:
 # #[derive(Asset, TypePath)]
 # struct Level {pub tiles: Vec<Vec<Tile>>}
 # enum LevelLoaderError {UnknownTile(char)}
-# enum Tile {End}
+# enum Tile {Flag}
 # struct LevelLoader;
 # trait ShortLoader {
 #     type Error;
@@ -39,7 +39,7 @@ async fn load(/* ... */) -> Result<Self::Asset, Self::Error> {
     for char in buf.chars() {
         match char {
             // ...
-            '🏁' => line.push(Tile::End),
+            '🏁' => line.push(Tile::Flag),
             char => Err(LevelLoaderError::UnknownTile(char))?,
         }
     }
@@ -102,7 +102,7 @@ And finally we'll display the flag in `display_tile`:
 # }
 # #[derive(Debug, Clone, Copy, Eq, PartialEq, Hash, States, Default)]
 # enum GameState { #[default] Game }
-# enum Tile { End }
+# enum Tile { Flag }
 #[derive(Component)]
 struct Flag;
 
@@ -110,10 +110,10 @@ fn display_tile(/* ... */) {
     # let assets: GameAssets = unimplemented!();
     # let commands: Commands = unimplemented!();
     # let (x, y) = (0.0, 0.0);
-    # let tile = Tile::End;
+    # let tile = Tile::Flag;
     match tile {
         // ...
-        Tile::End => {
+        Tile::Flag => {
             commands.spawn((
                 Sprite::from_atlas_image(
                     assets.items_image.clone(),

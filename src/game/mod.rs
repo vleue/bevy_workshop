@@ -87,7 +87,7 @@ fn display_tile(
                 StateScoped(GameState::Game),
             ));
         }
-        Tile::Start => {
+        Tile::Spawn => {
             commands.spawn((
                 Sprite::from_atlas_image(
                     assets.player_image.clone(),
@@ -101,7 +101,7 @@ fn display_tile(
                 Player,
             ));
         }
-        Tile::End => {
+        Tile::Flag => {
             commands
                 .spawn((
                     Sprite::from_atlas_image(

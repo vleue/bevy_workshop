@@ -86,7 +86,7 @@ And the `reached_flag` observer is added to the `Flag` entity:
 ```rust
 # extern crate bevy;
 # use bevy::prelude::*;
-# enum Tile { End }
+# enum Tile { Flag }
 # #[derive(Component)]
 # struct Flag;
 # #[derive(Event)]
@@ -95,10 +95,10 @@ And the `reached_flag` observer is added to the `Flag` entity:
 fn display_tile(/* ... */) {
     # let commands: Commands = unimplemented!();
     # let (x, y) = (0.0, 0.0);
-    # let tile = Tile::End;
+    # let tile = Tile::Flag;
     match tile {
         // ...
-        Tile::End => {
+        Tile::Flag => {
             commands
                 .spawn((
                     // ...
