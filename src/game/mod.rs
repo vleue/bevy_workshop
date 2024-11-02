@@ -47,6 +47,9 @@ struct Ground;
 #[derive(Component)]
 struct Flag;
 
+#[derive(Event)]
+struct ReachedFlag;
+
 fn ground_tile_index(line: &[Tile], i: usize) -> usize {
     match (
         i == 0 || !matches!(line.get(i - 1).unwrap_or(&Tile::Empty), Tile::Ground),
@@ -99,18 +102,20 @@ fn display_tile(
             ));
         }
         Tile::End => {
-            commands.spawn((
-                Sprite::from_atlas_image(
-                    assets.items_image.clone(),
-                    TextureAtlas {
-                        layout: assets.items_layout.clone(),
-                        index: 6,
-                    },
-                ),
-                Transform::from_xyz(x, y, 1.0).with_scale(Vec3::splat(SCALE)),
-                StateScoped(GameState::Game),
-                Flag,
-            ));
+            commands
+                .spawn((
+                    Sprite::from_atlas_image(
+                        assets.items_image.clone(),
+                        TextureAtlas {
+                            layout: assets.items_layout.clone(),
+                            index: 6,
+                        },
+                    ),
+                    Transform::from_xyz(x, y, 1.0).with_scale(Vec3::splat(SCALE)),
+                    StateScoped(GameState::Game),
+                    Flag,
+                ))
+                .observe(reached_flag);
         }
         Tile::Empty => {}
     }
@@ -144,4 +149,8 @@ fn animate_level(mut flags: Query<&mut Sprite, With<Flag>>) {
             atlas.index = 6;
         }
     }
+}
+
+fn reached_flag(_trigger: Trigger<ReachedFlag>, mut next: ResMut<NextState<GameState>>) {
+    next.set(GameState::Menu);
 }

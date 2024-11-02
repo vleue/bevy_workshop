@@ -5,7 +5,7 @@ use bevy::{
 
 use crate::GameState;
 
-use super::{AgainstWall, Ground, IsOnGround, Player, Velocity};
+use super::{AgainstWall, Flag, Ground, IsOnGround, Player, ReachedFlag, Velocity};
 
 pub struct PlayerPlugin;
 
@@ -20,6 +20,7 @@ impl Plugin for PlayerPlugin {
                 player_animation,
                 death_by_fall,
                 gravity.after(on_ground),
+                near_flag,
             )
                 .run_if(in_state(GameState::Game)),
         );
@@ -167,5 +168,22 @@ fn death_by_fall(
     let player_transform = player_transform.single();
     if player_transform.translation.y < -300.0 {
         next.set(GameState::Menu);
+    }
+}
+
+fn near_flag(
+    mut commands: Commands,
+    player_transform: Query<&Transform, With<Player>>,
+    flags: Query<(Entity, &Transform), With<Flag>>,
+) {
+    let player_transform = player_transform.single();
+    for (flag, flag_transform) in &flags {
+        if player_transform
+            .translation
+            .distance(flag_transform.translation)
+            < 50.0
+        {
+            commands.entity(flag).trigger(ReachedFlag);
+        }
     }
 }
