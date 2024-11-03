@@ -64,13 +64,11 @@ fn control_player(
     // ...
 #     let mut velocity = Velocity { jumping: 0.0 };
 #     let is_on_ground = IsOnGround(0.0);
-    if time.elapsed_secs() - is_on_ground.0 < 0.5 {
-        if keyboard_input.pressed(KeyCode::Space) {
-            if velocity.jumping == 0.0 {
-                audio_triggers.send(AudioTrigger::Jump);
-            }
-            velocity.jumping = 15.0;
+    if time.elapsed_secs() - is_on_ground.0 < 0.5 && keyboard_input.pressed(KeyCode::Space) {
+        if velocity.jumping == 0.0 {
+            audio_triggers.send(AudioTrigger::Jump);
         }
+        velocity.jumping = 15.0;
     }
 }
 ```
