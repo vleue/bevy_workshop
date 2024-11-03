@@ -5,6 +5,9 @@
 * Loading sprites and displaying them
   * with the [`AssetServer::load`](https://docs.rs/bevy/0.15.0-rc.2/bevy/asset/struct.AssetServer.html#method.load) function
   * by adding the [`Sprite`](https://docs.rs/bevy/0.15.0-rc.2/bevy/prelude/struct.Sprite.html) component
+* Defining components
+  * With [required components](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/component/trait.Component.html#required-components) to simplify adding related components
+  * And using Zero Sized Types as tag components to filter entities in queries
 * Handling user input
   * reading the [`ButtonInput<T>`](https://docs.rs/bevy/0.15.0-rc.2/bevy/input/struct.ButtonInput.html) resource
   * for the input [`KeyCode`](https://docs.rs/bevy/0.15.0-rc.2/bevy/input/keyboard/enum.KeyCode.html)
