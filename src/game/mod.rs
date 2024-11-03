@@ -7,6 +7,7 @@ use crate::{
     GameAssets, GameState,
 };
 
+mod audio;
 mod player;
 
 const SCALE: f32 = 0.5;
@@ -15,7 +16,7 @@ pub struct GamePlugin;
 
 impl Plugin for GamePlugin {
     fn build(&self, app: &mut App) {
-        app.add_plugins(player::PlayerPlugin)
+        app.add_plugins((player::PlayerPlugin, audio::AudioPlugin))
             .add_systems(OnEnter(GameState::Game), display_level)
             .add_systems(
                 Update,
@@ -29,7 +30,7 @@ impl Plugin for GamePlugin {
 struct Player;
 
 #[derive(Component, Default)]
-struct IsOnGround(bool);
+struct IsOnGround(f32);
 
 #[derive(Component, Default)]
 struct AgainstWall(bool, bool);
@@ -153,4 +154,9 @@ fn animate_level(mut flags: Query<&mut Sprite, With<Flag>>) {
 
 fn reached_flag(_trigger: Trigger<ReachedFlag>, mut next: ResMut<NextState<GameState>>) {
     next.set(GameState::Menu);
+}
+
+#[derive(Event)]
+enum AudioTrigger {
+    Jump,
 }

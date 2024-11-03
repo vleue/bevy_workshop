@@ -5,7 +5,7 @@ use bevy::{
 
 use crate::GameState;
 
-use super::{AgainstWall, Flag, Ground, IsOnGround, Player, ReachedFlag, Velocity};
+use super::{AgainstWall, AudioTrigger, Flag, Ground, IsOnGround, Player, ReachedFlag, Velocity};
 
 pub struct PlayerPlugin;
 
@@ -30,9 +30,11 @@ impl Plugin for PlayerPlugin {
 fn control_player(
     keyboard_input: Res<ButtonInput<KeyCode>>,
     mut player: Query<(&mut Velocity, &IsOnGround), With<Player>>,
+    time: Res<Time>,
+    mut audio_triggers: EventWriter<AudioTrigger>,
 ) {
     let (mut velocity, is_on_ground) = player.single_mut();
-    if is_on_ground.0 || velocity.jumping > 0.0 {
+    if time.elapsed_secs() - is_on_ground.0 < 2.0 || velocity.jumping > 0.0 {
         if keyboard_input.pressed(KeyCode::KeyA) {
             velocity.target = -5.0;
         } else if keyboard_input.pressed(KeyCode::KeyD) {
@@ -40,7 +42,12 @@ fn control_player(
         } else {
             velocity.target = 0.0;
         }
+    }
+    if time.elapsed_secs() - is_on_ground.0 < 0.5 {
         if keyboard_input.pressed(KeyCode::Space) {
+            if velocity.jumping == 0.0 {
+                audio_triggers.send(AudioTrigger::Jump);
+            }
             velocity.jumping = 15.0;
         }
     }
@@ -49,6 +56,7 @@ fn control_player(
 fn on_ground(
     mut player: Query<(&Transform, &mut IsOnGround, &mut AgainstWall), With<Player>>,
     ground: Query<&Transform, (Without<Player>, With<Ground>)>,
+    time: Res<Time>,
     #[cfg(feature = "debug")] mut gizmos: Gizmos,
 ) {
     let mut is_on_ground = false;
@@ -103,8 +111,8 @@ fn on_ground(
             }
         }
     }
-    if is_on_ground != player_on_ground.0 {
-        player_on_ground.0 = is_on_ground;
+    if is_on_ground {
+        player_on_ground.0 = time.elapsed_secs();
     }
     if is_against_wall.0 != player_against_wall.0 {
         player_against_wall.0 = is_against_wall.0;
@@ -114,10 +122,10 @@ fn on_ground(
     }
 }
 
-fn gravity(mut player: Query<(&mut Transform, &IsOnGround), With<Player>>) {
+fn gravity(mut player: Query<(&mut Transform, &IsOnGround), With<Player>>, time: Res<Time>) {
     let (mut player_transform, player_on_ground) = player.single_mut();
 
-    if !player_on_ground.0 {
+    if time.elapsed_secs() - player_on_ground.0 > 0.1 {
         player_transform.translation.y -= 10.0;
     }
 }

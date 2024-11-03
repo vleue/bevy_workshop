@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 
-use crate::{level_loader::LoadedLevel, GameAssets, GameState};
+use crate::{level_loader::LoadedLevel, AudioAssets, GameAssets, GameState};
 
 pub struct SplashPlugin;
 
@@ -85,5 +85,8 @@ fn load_assets(
             None,
             None,
         )),
+    });
+    commands.insert_resource(AudioAssets {
+        jump: asset_server.load("jump.wav"),
     });
 }

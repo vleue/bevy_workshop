@@ -43,3 +43,8 @@ struct GameAssets {
     items_image: Handle<Image>,
     items_layout: Handle<TextureAtlasLayout>,
 }
+
+#[derive(Resource)]
+struct AudioAssets {
+    jump: Handle<AudioSource>,
+}
