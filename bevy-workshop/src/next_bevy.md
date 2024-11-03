@@ -12,6 +12,12 @@
 
 ### Gizmos
 
+Try:
+
+```sh
+cargo run --features debug
+```
+
 ### Logging
 
 ### Tracing
