@@ -54,6 +54,12 @@ fn gravity(
 }
 ```
 
+<div class="warning">
+
+Don't forget to add the new `gravity` system to the `GamePlugin`, on `FixedUpdate` in the `GameState::Game` state.
+
+</div>
+
 ## Disjoint Queries
 
 Accessing the `Transform` component both mutably and immutably in the same system is not possible, unless we can prove the two queries are disjoint. The filters do this.
