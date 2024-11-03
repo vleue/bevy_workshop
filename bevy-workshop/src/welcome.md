@@ -18,4 +18,4 @@ This workshop won't use any third party plugins, and won't go very deep into ren
 
 ## Credits
 
-Assets used are from [Kenney's Platformer Pack Redux](https://kenney.nl/assets/platformer-pack-redux).
+Assets used are from [Kenney's Platformer Pack Redux](https://kenney.nl/assets/platformer-pack-redux), from [Kenney Game Assets All-in-1](https://kenney.itch.io/kenney-game-assets) or were created for this workshop.
