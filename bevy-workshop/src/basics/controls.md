@@ -1,6 +1,6 @@
 # Controlling With Input
 
-We'll control our player with the `A` and `Q` keys on the keyboard. `A` changes the position of the player to the left, and `Q` to the right.
+We'll control our player with the `A` and `D` keys on the keyboard. `A` changes the position of the player to the left, and `D` to the right.
 
 ```rust,no_run
 # extern crate bevy;
