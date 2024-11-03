@@ -42,6 +42,8 @@ jobs:
           file: bevy-workshop/book/workshop_bg.wasm
       - name: Copy assets
         run: cp -r assets bevy-workshop/book/
+      - name: Copy restart-audio-context.js for wasm
+        run: cp wasm/restart-audio-context.js bevy-workshop/book/
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
