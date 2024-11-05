@@ -81,9 +81,3 @@ fn display_level(mut commands: Commands, assets: Res<GameAssets>) {
     ));
 }
 ```
-
-<div class="warning">
-
-Don't forget to add the new `display_level` system to the `GamePlugin`, on `Update` in the `GameState::Game` state.
-
-</div>
