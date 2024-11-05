@@ -66,6 +66,12 @@ If you want more details on how this works, you can find them here: [Dependency 
 
 Commands are the primary means of modifying the game world, allowing you to add, mutate, or remove entities and components. They are not executed straight away, but at sync points between systems.
 
+## Hierarchy
+
+Bevy has the concept of hierarchy, with Parent / Children relationship. This is heavily used in UI for layout, or in animations.
+
+When an entity is a child of another, its position is relative to its parent. It's also possible to remove a complete branch of a hierarchy at once.
+
 ## Side note: UI
 
 The startup system in the example above spawns text. It first spawns a node entity, which functions similarly to a `<div>` HTML tag, used to center the text, and then spawns the text itself as a child.
