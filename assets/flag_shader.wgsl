@@ -30,11 +30,7 @@ fn fragment(mesh: VertexOutput) -> @location(0) vec4<f32> {
     let atlas_height = 512.0;
     let sprite_size = 128.0;
 
-    var texture = textureSample(
-        base_color_texture,
-        base_color_sampler,
-        vec2<f32>((mesh.uv.x + index.x) * sprite_size / atlas_width, (mesh.uv.y + index.y) * sprite_size / atlas_height)
-    );
+    var color: vec4<f32> = vec4<f32>(0.0, 0.0, 0.0, 0.0);
 
     let max_distance = 750.0;
 
@@ -49,15 +45,25 @@ fn fragment(mesh: VertexOutput) -> @location(0) vec4<f32> {
                 let dist = distance(mesh.uv - vec2(0.5,0.5) - dir*t, vec2(0, 0)+(Hash12Polar(f32(j*i))/2.));
 
                 if bright / dist > 0.1 {
-                    texture.r = bright / dist * 2.0;
-                    texture.g = bright / dist / 2.0;
-                    texture.b = bright / dist / 2.0;
-                    texture.a = 1.0;
+                    color.r = bright / dist * 2.0;
+                    color.g = bright / dist / 2.0;
+                    color.b = bright / dist / 2.0;
+                    color.a = 1.0;
                 }
             }
         }
     
     }
 
-    return texture;
+    var texture = textureSample(
+        base_color_texture,
+        base_color_sampler,
+        vec2<f32>((mesh.uv.x + index.x) * sprite_size / atlas_width, (mesh.uv.y + index.y) * sprite_size / atlas_height)
+    );
+
+    if texture.a > 0.1 {
+        color = texture;
+    }
+
+    return color;
 }
