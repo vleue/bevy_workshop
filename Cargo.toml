@@ -25,6 +25,7 @@ features = [
     "png",
     "webgl2",
     "x11",
+    "custom_cursor",      # workaround for https://github.com/bevyengine/bevy/issues/16254
 ]
 
 [features]
