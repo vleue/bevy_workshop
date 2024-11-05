@@ -2,7 +2,7 @@
 
 ## E for Entity
 
-An Entity is a unique identifier that represents a general-purpose object in the ECS. It acts as an index.
+An Entity is a unique identifier that represents a general-purpose object in the ECS. It acts as a pointer.
 
 ## C for Component
 

@@ -66,13 +66,13 @@ fn remove_title(
 
 ## Resources
 
-Resources are used to store singletons in the world, based on their type. See [`Resource`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/trait.Resource.html).
+[`Resources`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/trait.Resource.html) are used to store singletons in the world, based on their type.
 
 Here, we're adding a resource `SplashScreenTimer` that simply holds a `Timer`.
 
 ## Queries
 
-Queries are used to access entities and their components in the world and can be filtered. See [`Query`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/struct.Query.html).
+[`Queries`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/struct.Query.html) are used to access entities and their components in the world and can be filtered.
 
 In the `remove_title` system, we're using a `Query` that requests access only to the [`Entity`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/entity/struct.Entity.html), filtering on the component [`Node`](https://docs.rs/bevy/0.15.0-rc.2/bevy/prelude/struct.Node.html), which is a basic component shared among all UI elements.
 

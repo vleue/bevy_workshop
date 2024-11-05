@@ -58,13 +58,13 @@ Systems in the `Update` schedule execute every frame. With vsync enabled, this i
 
 ## Systems
 
-Systems are functions that accept up to 16 parameters, each of which must implement the [`SystemParam`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/system/trait.SystemParam.html) trait. These parameters are provided at runtime through dependency injection based on their type.
+Systems are functions whose parameters must implement the [`SystemParam`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/system/trait.SystemParam.html) trait. These parameters are provided through dependency injection based on their type.
 
 If you want more details on how this works, you can find them here: [Dependency Injection like Bevy Engine from Scratch](https://promethia-27.github.io/dependency_injection_like_bevy_from_scratch/introductions.html)
 
 ## Commands
 
-Commands are the primary means of modifying the game world, allowing you to add, mutate, or remove entities and components. They are not executed straight away, but at sync points between systems.
+Commands are one way of modifying the game world, without risking to encounter double borrow of the world. You can add, mutate, or remove entities and components. They are not executed straight away, but at sync points between systems.
 
 ## Hierarchy
 
@@ -76,4 +76,4 @@ When an entity is a child of another, its position is relative to its parent. It
 
 The startup system in the example above spawns text. It first spawns a node entity, which functions similarly to a `<div>` HTML tag, used to center the text, and then spawns the text itself as a child.
 
-Bevy offers two layout types for UI: Flexbox and CSS Grids.
+Bevy offers two layout strategies for UI: Flexbox and CSS Grids.

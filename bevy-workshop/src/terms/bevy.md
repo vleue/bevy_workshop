@@ -18,7 +18,7 @@ A Query is used to access entities and their components in a World. It allows sy
 
 ## Commands
 
-Commands are used to schedule changes to the World, such as adding or removing entities and components. They are executed at synchronization points.
+Commands are used to schedule changes to the World, such as adding or removing entities and components. They are executed later during the same frame, after the system that generated them ended.
 
 ## Resource
 
@@ -31,7 +31,3 @@ An Event is a message that can be sent and received by systems. Events are used 
 ## Observer
 
 An Observer is a system that reacts to changes in the World, such as component modifications or entity creation. It is used to implement reactive behavior.
-
-## Tag Component
-
-A Tag Component is a zero-sized type used to mark entities with a specific characteristic or role. It is used for efficient filtering and querying.
