@@ -72,7 +72,7 @@ We've spawned two entities with the `Sprite` component, to display a block of co
 
 Even though it's not specified, the player entity will also have a `Transform` component, which will be added with the default value.
 
-This is because `Transform` is a [required component](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/component/trait.Component.html#required-components) of `Sprite`.
+This is because `Transform` is a [required component](https://docs.rs/bevy/0.15.0-rc.3/bevy/ecs/component/trait.Component.html#required-components) of `Sprite`.
 
 Required components are specified by an attribute when deriving `Component`, and should implement `Default` (or specify a constructor in the attribute).
 

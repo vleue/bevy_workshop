@@ -135,4 +135,4 @@ fn display_tile(/* ... */) {
 
 If you play a few times, you may notice that the order of sprites varies: sometimes the alien is in front of the flag, sometimes behind. This can be controlled with the `Z` index.
 
-Everything we've displayed up till now, we've used `O.O` for the `z` value when calling [`Transform::from_xyz`](https://docs.rs/bevy/0.15.0-rc.2/bevy/transform/components/struct.Transform.html#method.from_xyz). By using the same value for every sprite, we're not telling the engine the order they should be displayed. In Bevy, higher values are displayed in front.
+Everything we've displayed up till now, we've used `O.O` for the `z` value when calling [`Transform::from_xyz`](https://docs.rs/bevy/0.15.0-rc.3/bevy/transform/components/struct.Transform.html#method.from_xyz). By using the same value for every sprite, we're not telling the engine the order they should be displayed. In Bevy, higher values are displayed in front.

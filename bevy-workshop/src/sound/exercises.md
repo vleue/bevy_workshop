@@ -12,13 +12,13 @@ Tips:
 Add a background music
 
 Tips:
-* You can use [`PlaybackSettings::LOOP`](https://docs.rs/bevy/0.15.0-rc.2/bevy/audio/struct.PlaybackSettings.html#associatedconstant.LOOP) to play a looping audio
+* You can use [`PlaybackSettings::LOOP`](https://docs.rs/bevy/0.15.0-rc.3/bevy/audio/struct.PlaybackSettings.html#associatedconstant.LOOP) to play a looping audio
 
 ## Audio Settings
 
 Audio volume should always be configurable. This is important for accessibility. Add a way to control volume of all audio, or even better ways to control separately the volume of the background music and of the audio effects.
 
 Tips:
-* [`PlaybackSettings`](https://docs.rs/bevy/0.15.0-rc.2/bevy/audio/struct.PlaybackSettings.html) can be used to control volume of an audio
+* [`PlaybackSettings`](https://docs.rs/bevy/0.15.0-rc.3/bevy/audio/struct.PlaybackSettings.html) can be used to control volume of an audio
 * You can add +/- buttons on the menu screen that control the volume
 * Store the current volume in a resource, and use it when spawning new entities to play audio

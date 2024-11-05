@@ -25,7 +25,7 @@ fn load_assets(
 
 ```
 
-The build-in type for audio is [`AudioSource`](https://docs.rs/bevy/0.15.0-rc.2/bevy/audio/struct.AudioSource.html).
+The build-in type for audio is [`AudioSource`](https://docs.rs/bevy/0.15.0-rc.3/bevy/audio/struct.AudioSource.html).
 
 ## Trigger an Event to Play Audio
 
@@ -42,7 +42,7 @@ enum AudioTrigger {
 }
 ```
 
-To send an event, we can use the [`EventWriter`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/event/struct.EventWriter.html) system parameter:
+To send an event, we can use the [`EventWriter`](https://docs.rs/bevy/0.15.0-rc.3/bevy/ecs/event/struct.EventWriter.html) system parameter:
 
 ```rust
 # extern crate bevy;
@@ -75,11 +75,11 @@ fn control_player(
 
 ## Play Audio when Receiving the Event
 
-To receive an event, we must use the [`EventReader`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/event/struct.EventReader.html) system parameter, and by calling [`EventReader::read`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/event/struct.EventReader.html#method.read) we can iterate over events.
+To receive an event, we must use the [`EventReader`](https://docs.rs/bevy/0.15.0-rc.3/bevy/ecs/event/struct.EventReader.html) system parameter, and by calling [`EventReader::read`](https://docs.rs/bevy/0.15.0-rc.3/bevy/ecs/event/struct.EventReader.html#method.read) we can iterate over events.
 
-To play audio, we must spawn an entity with the [`AudioPlayer`](https://docs.rs/bevy/0.15.0-rc.2/bevy/audio/struct.AudioPlayer.html) component that will contain an [`Handle`](https://docs.rs/bevy/0.15.0-rc.2/bevy/asset/enum.Handle.html) to the [`AudioSource`](https://docs.rs/bevy/0.15.0-rc.2/bevy/audio/struct.AudioSource.html) asset.
+To play audio, we must spawn an entity with the [`AudioPlayer`](https://docs.rs/bevy/0.15.0-rc.3/bevy/audio/struct.AudioPlayer.html) component that will contain an [`Handle`](https://docs.rs/bevy/0.15.0-rc.3/bevy/asset/enum.Handle.html) to the [`AudioSource`](https://docs.rs/bevy/0.15.0-rc.3/bevy/audio/struct.AudioSource.html) asset.
 
-By default, audio entities remain present once the audio is done playing. You can change this behaviour with the component [`PlaybackSettings::DESPAWN`](https://docs.rs/bevy/0.15.0-rc.2/bevy/audio/struct.PlaybackSettings.html#associatedconstant.DESPAWN).
+By default, audio entities remain present once the audio is done playing. You can change this behaviour with the component [`PlaybackSettings::DESPAWN`](https://docs.rs/bevy/0.15.0-rc.3/bevy/audio/struct.PlaybackSettings.html#associatedconstant.DESPAWN).
 
 ```rust
 # extern crate bevy;
@@ -106,7 +106,7 @@ fn play_audio(
 }
 ```
 
-We'll start a new plugin for all the audio related actions. Unlike events used with triggers and observers, events used with `EventWriter` and `EventReader` must be registered in the application with [`App::add_event`](https://docs.rs/bevy/0.15.0-rc.2/bevy/app/struct.App.html#method.add_event). The plugin will register the event and add the system.
+We'll start a new plugin for all the audio related actions. Unlike events used with triggers and observers, events used with `EventWriter` and `EventReader` must be registered in the application with [`App::add_event`](https://docs.rs/bevy/0.15.0-rc.3/bevy/app/struct.App.html#method.add_event). The plugin will register the event and add the system.
 
 ```rust
 # extern crate bevy;

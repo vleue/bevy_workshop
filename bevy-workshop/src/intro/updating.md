@@ -66,20 +66,20 @@ fn remove_title(
 
 ## Resources
 
-[`Resources`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/trait.Resource.html) are used to store singletons in the world, based on their type.
+[`Resources`](https://docs.rs/bevy/0.15.0-rc.3/bevy/ecs/prelude/trait.Resource.html) are used to store singletons in the world, based on their type.
 
 Here, we're adding a resource `SplashScreenTimer` that simply holds a `Timer`.
 
 ## Queries
 
-[`Queries`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/struct.Query.html) are used to access entities and their components in the world and can be filtered.
+[`Queries`](https://docs.rs/bevy/0.15.0-rc.3/bevy/ecs/prelude/struct.Query.html) are used to access entities and their components in the world and can be filtered.
 
-In the `remove_title` system, we're using a `Query` that requests access only to the [`Entity`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/entity/struct.Entity.html), filtering on the component [`Node`](https://docs.rs/bevy/0.15.0-rc.2/bevy/prelude/struct.Node.html), which is a basic component shared among all UI elements.
+In the `remove_title` system, we're using a `Query` that requests access only to the [`Entity`](https://docs.rs/bevy/0.15.0-rc.3/bevy/ecs/entity/struct.Entity.html), filtering on the component [`Node`](https://docs.rs/bevy/0.15.0-rc.3/bevy/prelude/struct.Node.html), which is a basic component shared among all UI elements.
 
 ## Mutable vs. Immutable Access
 
 The `remove_title` system accesses two resources:
-* [`Time`](https://docs.rs/bevy/0.15.0-rc.2/bevy/prelude/struct.Time.html), provided by Bevy, in an immutable way
+* [`Time`](https://docs.rs/bevy/0.15.0-rc.3/bevy/prelude/struct.Time.html), provided by Bevy, in an immutable way
 * `SplashScreenTimer`, our custom resource, in a mutable way; the timer in this resource will be ticked, so we need to modify it
 
 As the world continues to hold ownership of data, systems have access to references. Only one system accessing a given part of the world mutably can run at a time. Systems that access different parts mutably, or the same parts immutably, can run in parallel.

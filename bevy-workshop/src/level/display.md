@@ -1,8 +1,8 @@
 # Displaying the Level
 
-Loading an asset is an asynchronous process. As it involves file or network access, it doesn't happen immediately. This is why the asset server is returning an [`Handle`](https://docs.rs/bevy/0.15.0-rc.2/bevy/asset/enum.Handle.html) instead of the data.
+Loading an asset is an asynchronous process. As it involves file or network access, it doesn't happen immediately. This is why the asset server is returning an [`Handle`](https://docs.rs/bevy/0.15.0-rc.3/bevy/asset/enum.Handle.html) instead of the data.
 
-Accessing the data from the [`Assets<T>`](https://docs.rs/bevy/0.15.0-rc.2/bevy/asset/struct.Assets.html) resource returns an `Option<T>` as the data may not be present yet. In our case, we're using the 2 second delay of the splash screen to be sure that assets are done loading, so we can `unwrap()` the `Option`.
+Accessing the data from the [`Assets<T>`](https://docs.rs/bevy/0.15.0-rc.3/bevy/asset/struct.Assets.html) resource returns an `Option<T>` as the data may not be present yet. In our case, we're using the 2 second delay of the splash screen to be sure that assets are done loading, so we can `unwrap()` the `Option`.
 
 ```rust
 # extern crate bevy;

@@ -3,17 +3,17 @@
 ## What You've learned
 
 * Loading sprites and displaying them
-  * with the [`AssetServer::load`](https://docs.rs/bevy/0.15.0-rc.2/bevy/asset/struct.AssetServer.html#method.load) function
-  * by adding the [`Sprite`](https://docs.rs/bevy/0.15.0-rc.2/bevy/prelude/struct.Sprite.html) component
+  * with the [`AssetServer::load`](https://docs.rs/bevy/0.15.0-rc.3/bevy/asset/struct.AssetServer.html#method.load) function
+  * by adding the [`Sprite`](https://docs.rs/bevy/0.15.0-rc.3/bevy/prelude/struct.Sprite.html) component
 * Defining components
-  * With [required components](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/component/trait.Component.html#required-components) to simplify adding related components
+  * With [required components](https://docs.rs/bevy/0.15.0-rc.3/bevy/ecs/component/trait.Component.html#required-components) to simplify adding related components
   * And using Zero Sized Types as tag components to filter entities in queries
 * Handling user input
-  * reading the [`ButtonInput<T>`](https://docs.rs/bevy/0.15.0-rc.2/bevy/input/struct.ButtonInput.html) resource
-  * for the input [`KeyCode`](https://docs.rs/bevy/0.15.0-rc.2/bevy/input/keyboard/enum.KeyCode.html)
+  * reading the [`ButtonInput<T>`](https://docs.rs/bevy/0.15.0-rc.3/bevy/input/struct.ButtonInput.html) resource
+  * for the input [`KeyCode`](https://docs.rs/bevy/0.15.0-rc.3/bevy/input/keyboard/enum.KeyCode.html)
 * Writing more complex queries, and updating components
-  * the [`With`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/struct.With.html) and [`Without`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/struct.Without.html) query filters
-  * and using [`&mut`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/change_detection/struct.Mut.html) to query data mutably
+  * the [`With`](https://docs.rs/bevy/0.15.0-rc.3/bevy/ecs/prelude/struct.With.html) and [`Without`](https://docs.rs/bevy/0.15.0-rc.3/bevy/ecs/prelude/struct.Without.html) query filters
+  * and using [`&mut`](https://docs.rs/bevy/0.15.0-rc.3/bevy/ecs/change_detection/struct.Mut.html) to query data mutably
 
 ## Going Further
 

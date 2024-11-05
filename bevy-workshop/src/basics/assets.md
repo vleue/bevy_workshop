@@ -4,7 +4,7 @@ Let's improve on those blocks of colors! We'll start by loading a spritesheet fo
 
 ## Loading Assets
 
-Loading assets is asynchronous, and returns an [`Handle`](https://docs.rs/bevy/0.15.0-rc.2/bevy/asset/enum.Handle.html) to its data. By adding a system to our splash screen, we ensure it happens as early as possible.
+Loading assets is asynchronous, and returns an [`Handle`](https://docs.rs/bevy/0.15.0-rc.3/bevy/asset/enum.Handle.html) to its data. By adding a system to our splash screen, we ensure it happens as early as possible.
 
 ```rust,no_run
 # extern crate bevy;

@@ -19,7 +19,7 @@ Let's go with a basic format that you can manually edit with a good idea of how 
 
 ## Asset Type
 
-To match the basic level format, we'll use a basic type that will just be a vec of vecs of tiles. The struct must derive the [`Asset`](https://docs.rs/bevy/0.15.0-rc.2/bevy/asset/trait.Asset.html) trait.
+To match the basic level format, we'll use a basic type that will just be a vec of vecs of tiles. The struct must derive the [`Asset`](https://docs.rs/bevy/0.15.0-rc.3/bevy/asset/trait.Asset.html) trait.
 
 ```rust
 # extern crate bevy;
@@ -37,7 +37,7 @@ enum Tile {
 
 ## Asset Loader
 
-To load this format, we'll read the file character by character, then choose the right tile depending on the character. Bevy expects custom asset loader to implement the trait [`AssetLoader`](https://docs.rs/bevy/0.15.0-rc.2/bevy/asset/trait.AssetLoader.html).
+To load this format, we'll read the file character by character, then choose the right tile depending on the character. Bevy expects custom asset loader to implement the trait [`AssetLoader`](https://docs.rs/bevy/0.15.0-rc.3/bevy/asset/trait.AssetLoader.html).
 
 ```rust
 # extern crate bevy;
@@ -96,7 +96,7 @@ impl AssetLoader for LevelLoader {
 
 ## Loading the Level
 
-Custom asset formats and loaders must be initiated in the application with [`App::init_asset`](https://docs.rs/bevy/0.15.0-rc.2/bevy/app/struct.App.html#method.init_asset) and [`App::init_asset_loader`](https://docs.rs/bevy/0.15.0-rc.2/bevy/asset/trait.AssetApp.html#tymethod.init_asset_loader). We can wrap that in a plugin.
+Custom asset formats and loaders must be initiated in the application with [`App::init_asset`](https://docs.rs/bevy/0.15.0-rc.3/bevy/app/struct.App.html#method.init_asset) and [`App::init_asset_loader`](https://docs.rs/bevy/0.15.0-rc.3/bevy/asset/trait.AssetApp.html#tymethod.init_asset_loader). We can wrap that in a plugin.
 
 ```rust
 # extern crate bevy;

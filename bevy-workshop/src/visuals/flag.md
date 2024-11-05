@@ -25,9 +25,9 @@ pub struct FlagMaterial {
 }
 ```
 
-By deriving the [`AsBindGroup`](https://docs.rs/bevy/0.15.0-rc.2/bevy/render/render_resource/trait.AsBindGroup.html) trait and annotating the field of the struct, Bevy will be able to know how to transform the data from Rust type to what is expected by the GPU:
+By deriving the [`AsBindGroup`](https://docs.rs/bevy/0.15.0-rc.3/bevy/render/render_resource/trait.AsBindGroup.html) trait and annotating the field of the struct, Bevy will be able to know how to transform the data from Rust type to what is expected by the GPU:
 * `atlas` has the handle to the spritesheet
-* `index` is the index of the sprite in the spritesheet. Bevy uses a single `u32` for that, and get the number of rows and columns from the [`TextureAtlasLayout`](https://docs.rs/bevy/0.15.0-rc.2/bevy/prelude/struct.TextureAtlasLayout.html). We'll do simpler and hard code some values, and use `(i, j)` coordinatesto specify which sprite to use
+* `index` is the index of the sprite in the spritesheet. Bevy uses a single `u32` for that, and get the number of rows and columns from the [`TextureAtlasLayout`](https://docs.rs/bevy/0.15.0-rc.3/bevy/prelude/struct.TextureAtlasLayout.html). We'll do simpler and hard code some values, and use `(i, j)` coordinatesto specify which sprite to use
 * `distance` is the distance between the flag and the player
 
 <div class="warning">
@@ -42,7 +42,7 @@ This workshop use padding as it's easier to read and the material is only used o
 
 ## Custom Material
 
-Next is to define the shader that will be used to render the data. This is done by implementing the [`Material2d`](https://docs.rs/bevy/0.15.0-rc.2/bevy/sprite/trait.Material2d.html) trait:
+Next is to define the shader that will be used to render the data. This is done by implementing the [`Material2d`](https://docs.rs/bevy/0.15.0-rc.3/bevy/sprite/trait.Material2d.html) trait:
 
 ```rust
 # extern crate bevy;

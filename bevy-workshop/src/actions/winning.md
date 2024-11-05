@@ -17,7 +17,7 @@ struct ReachedFlag;
 
 ## Triggers
 
-They can be global with [`Commands::trigger`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/struct.Commands.html#method.trigger) and [`App::add_observer`](https://docs.rs/bevy/0.15.0-rc.2/bevy/app/struct.App.html#method.add_observer), or specific to an entity with [`EntityCommands::trigger`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/struct.EntityCommands.html#method.trigger) and [`EntityCommands::observe`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/prelude/struct.EntityCommands.html#method.observe).
+They can be global with [`Commands::trigger`](https://docs.rs/bevy/0.15.0-rc.3/bevy/ecs/prelude/struct.Commands.html#method.trigger) and [`App::add_observer`](https://docs.rs/bevy/0.15.0-rc.3/bevy/app/struct.App.html#method.add_observer), or specific to an entity with [`EntityCommands::trigger`](https://docs.rs/bevy/0.15.0-rc.3/bevy/ecs/prelude/struct.EntityCommands.html#method.trigger) and [`EntityCommands::observe`](https://docs.rs/bevy/0.15.0-rc.3/bevy/ecs/prelude/struct.EntityCommands.html#method.observe).
 
 Here is the entity specific version to trigger the event:
 
@@ -67,7 +67,7 @@ impl Plugin for PlayerPlugin {
 
 ## Observers
 
-To react to the trigger, we use a system that takes a [`Trigger`](https://docs.rs/bevy/0.15.0-rc.2/bevy/ecs/observer/struct.Trigger.html) as a system parameter, plus any other parameter needed.
+To react to the trigger, we use a system that takes a [`Trigger`](https://docs.rs/bevy/0.15.0-rc.3/bevy/ecs/observer/struct.Trigger.html) as a system parameter, plus any other parameter needed.
 
 ```rust
 # extern crate bevy;
