@@ -15,7 +15,7 @@ pub enum Tile {
 
 Then parse it in our `LevelLoader`:
 
-```rust,edition2021
+```rust
 # extern crate bevy;
 # use bevy::{asset::{io::Reader, AssetLoader, AsyncReadExt, LoadContext}, prelude::*};
 # #[derive(Asset, TypePath)]

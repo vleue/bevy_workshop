@@ -39,7 +39,7 @@ enum Tile {
 
 To load this format, we'll read the file character by character, then choose the right tile depending on the character. Bevy expects custom asset loader to implement the trait [`AssetLoader`](https://docs.rs/bevy/0.15.0-rc.2/bevy/asset/trait.AssetLoader.html).
 
-```rust,edition2021
+```rust
 # extern crate bevy;
 # extern crate thiserror;
 # use bevy::{asset::{io::Reader, AssetLoader, AsyncReadExt, LoadContext}, prelude::*};
@@ -98,7 +98,7 @@ impl AssetLoader for LevelLoader {
 
 Custom asset formats and loaders must be initiated in the application with [`App::init_asset`](https://docs.rs/bevy/0.15.0-rc.2/bevy/app/struct.App.html#method.init_asset) and [`App::init_asset_loader`](https://docs.rs/bevy/0.15.0-rc.2/bevy/asset/trait.AssetApp.html#tymethod.init_asset_loader). We can wrap that in a plugin.
 
-```rust,edition2021
+```rust
 # extern crate bevy;
 # extern crate thiserror;
 # use bevy::{asset::{io::Reader, AssetLoader, AsyncReadExt, LoadContext}, prelude::*};
