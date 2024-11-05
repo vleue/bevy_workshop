@@ -5,7 +5,10 @@ use bevy::{
 
 use crate::GameState;
 
-use super::{AgainstWall, AudioTrigger, Flag, Ground, IsOnGround, Player, ReachedFlag, Velocity};
+use super::{
+    flag::FlagMaterial, AgainstWall, AudioTrigger, Flag, Ground, IsOnGround, Player, ReachedFlag,
+    Velocity,
+};
 
 pub struct PlayerPlugin;
 
@@ -192,15 +195,17 @@ fn death_by_fall(
 fn near_flag(
     mut commands: Commands,
     player_transform: Query<&Transform, With<Player>>,
-    flags: Query<(Entity, &Transform), With<Flag>>,
+    flags: Query<(Entity, &Transform, &MeshMaterial2d<FlagMaterial>), With<Flag>>,
+    mut flag_materials: ResMut<Assets<FlagMaterial>>,
 ) {
     let player_transform = player_transform.single();
-    for (flag, flag_transform) in &flags {
-        if player_transform
+    for (flag, flag_transform, flag_material) in &flags {
+        let distance = player_transform
             .translation
-            .distance(flag_transform.translation)
-            < 50.0
-        {
+            .distance(flag_transform.translation);
+        let material = flag_materials.get_mut(flag_material).unwrap();
+        material.distance.x = distance;
+        if distance < 50.0 {
             commands.entity(flag).trigger(ReachedFlag);
         }
     }
