@@ -1,0 +1,15 @@
+{
+	"name": "Bevy Workshop",
+	"image": "mcr.microsoft.com/devcontainers/universal:2",
+	"features": {
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "os-provided"
+		},
+		"ghcr.io/lee-orr/rusty-dev-containers/wasm-bindgen-cli:0": {},
+		"ghcr.io/lee-orr/rusty-dev-containers/wasm32-unknown-unknown:0": {}
+	},
+	"forwardPorts": [
+		8000
+	],
+	"postCreateCommand": "python -m http.server --directory &"
+}
