@@ -15,9 +15,11 @@
 		8000
 	],
 	"postAttachCommand": {
-		"server": "python -m http.server --directory wasm &"
+		"server": "python -m http.server --directory wasm",
+		"watcher": "cargo watch --ignore wasm --shell 'cargo build --target wasm32-unknown-unknown && wasm-bindgen --out-dir wasm --out-name workshop --target web target/wasm32-unknown-unknown/debug/bevy_workshop.wasm'"
 	},
-	"updateContentCommand": "cargo build --target wasm32-unknown-unknown",
+	"onCreateCommand": "curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash && cargo binstall --no-confirm wasm-bindgen-cli cargo-watch",
+	"updateContentCommand": "cargo build --target wasm32-unknown-unknown && wasm-bindgen --out-dir wasm --out-name workshop --target web target/wasm32-unknown-unknown/debug/bevy_workshop.wasm",
 	"customizations": {
 		"vscode": {
 			"extensions": [
