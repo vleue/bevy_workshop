@@ -124,7 +124,7 @@ fn level_loader_plugin(app: &mut App) {
 
 <div class="warning">
 
-Don't forget to add the new `LevelLoaderPlugin` to the app in the `main.rs` file.
+Don't forget to add the new `level_loader_plugin` to the app in the `main.rs` file.
 
 </div>
 

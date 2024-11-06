@@ -48,7 +48,7 @@ fn near_flag(
 }
 ```
 
-The `near_flag` system is added to the `PlayerPlugin`:
+The `near_flag` system is added to the `player_plugin`:
 
 ```rust
 # extern crate bevy;
@@ -56,7 +56,6 @@ The `near_flag` system is added to the `PlayerPlugin`:
 # #[derive(Debug, Clone, Copy, Eq, PartialEq, Hash, States, Default)]
 # enum GameState { #[default] Game }
 # fn near_flag(){}
-# struct PlayerPlugin;
 fn player_plugin(app: &mut App) {
     // ...
     app.add_systems(FixedUpdate, near_flag.run_if(in_state(GameState::Game)));

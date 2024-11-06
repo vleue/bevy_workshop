@@ -23,6 +23,6 @@ fn control_player(
 
 <div class="warning">
 
-Don't forget to add the new `control_player` system to the `GamePlugin`, on `FixedUpdate` in the `GameState::Game` state.
+Don't forget to add the new `control_player` system to the `game_plugin`, on `FixedUpdate` in the `GameState::Game` state.
 
 </div>

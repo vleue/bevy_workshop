@@ -37,7 +37,7 @@ We're loading the spritesheet as a texture atlas, and saying each sprite is 128p
 
 <div class="warning">
 
-Don't forget to add the new `load_assets` system to the `SplashPlugin`, when entering the `GameState::Splash` state.
+Don't forget to add the new `load_assets` system to the `splash_plugin`, when entering the `GameState::Splash` state.
 
 </div>
 
