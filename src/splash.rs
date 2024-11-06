@@ -2,13 +2,9 @@ use bevy::prelude::*;
 
 use crate::{level_loader::LoadedLevel, AudioAssets, GameAssets, GameState};
 
-pub struct SplashPlugin;
-
-impl Plugin for SplashPlugin {
-    fn build(&self, app: &mut App) {
-        app.add_systems(OnEnter(GameState::Splash), (display_title, load_assets))
-            .add_systems(Update, switch_to_menu.run_if(in_state(GameState::Splash)));
-    }
+pub fn splash_plugin(app: &mut App) {
+    app.add_systems(OnEnter(GameState::Splash), (display_title, load_assets))
+        .add_systems(Update, switch_to_menu.run_if(in_state(GameState::Splash)));
 }
 
 fn display_title(mut commands: Commands) {

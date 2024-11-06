@@ -10,24 +10,20 @@ use super::{
     Velocity,
 };
 
-pub struct PlayerPlugin;
-
-impl Plugin for PlayerPlugin {
-    fn build(&self, app: &mut App) {
-        app.add_systems(
-            FixedUpdate,
-            (
-                control_player,
-                on_ground,
-                moving,
-                player_animation,
-                death_by_fall,
-                gravity.after(on_ground),
-                near_flag,
-            )
-                .run_if(in_state(GameState::Game)),
-        );
-    }
+pub fn player_plugin(app: &mut App) {
+    app.add_systems(
+        FixedUpdate,
+        (
+            control_player,
+            on_ground,
+            moving,
+            player_animation,
+            death_by_fall,
+            gravity.after(on_ground),
+            near_flag,
+        )
+            .run_if(in_state(GameState::Game)),
+    );
 }
 
 fn control_player(

@@ -57,11 +57,9 @@ The `near_flag` system is added to the `PlayerPlugin`:
 # enum GameState { #[default] Game }
 # fn near_flag(){}
 # struct PlayerPlugin;
-impl Plugin for PlayerPlugin {
-    fn build(&self, app: &mut App) {
-        // ...
-        app.add_systems(FixedUpdate, near_flag.run_if(in_state(GameState::Game)));
-    }
+fn player_plugin(app: &mut App) {
+    // ...
+    app.add_systems(FixedUpdate, near_flag.run_if(in_state(GameState::Game)));
 }
 ```
 

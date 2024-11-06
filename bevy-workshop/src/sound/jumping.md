@@ -114,12 +114,9 @@ We'll start a new plugin for all the audio related actions. Unlike events used w
 # #[derive(Event)]
 # enum AudioTrigger {Jump}
 # fn play_audio() {}
-pub struct AudioPlugin;
-
-impl Plugin for AudioPlugin {
-    fn build(&self, app: &mut App) {
-        app.add_event::<AudioTrigger>()
-            .add_systems(Update, play_audio);
-    }
+fn audio_plugin(app: &mut App) {
+    app.add_event::<AudioTrigger>()
+        .add_systems(Update, play_audio);
 }
+
 ```

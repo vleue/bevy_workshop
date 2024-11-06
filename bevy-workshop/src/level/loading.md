@@ -117,12 +117,8 @@ Custom asset formats and loaders must be initiated in the application with [`App
 #     async fn load(&self, reader: &mut dyn Reader, _settings: &(), _load_context: &mut LoadContext<'_>) -> Result<Self::Asset, Self::Error> { unimplemented!() }
 #     fn extensions(&self) -> &[&str] { &["bw"] }
 # }
-pub struct LevelLoaderPlugin;
-
-impl Plugin for LevelLoaderPlugin {
-    fn build(&self, app: &mut App) {
-        app.init_asset::<Level>().init_asset_loader::<LevelLoader>();
-    }
+fn level_loader_plugin(app: &mut App) {
+    app.init_asset::<Level>().init_asset_loader::<LevelLoader>();
 }
 ```
 

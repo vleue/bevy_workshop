@@ -4,12 +4,8 @@ use bevy::{
     sprite::{AlphaMode2d, Material2d, Material2dPlugin},
 };
 
-pub struct FlagPlugin;
-
-impl Plugin for FlagPlugin {
-    fn build(&self, app: &mut App) {
-        app.add_plugins(Material2dPlugin::<FlagMaterial>::default());
-    }
+pub fn flag_plugin(app: &mut App) {
+    app.add_plugins(Material2dPlugin::<FlagMaterial>::default());
 }
 
 #[derive(Asset, TypePath, AsBindGroup, Debug, Clone)]

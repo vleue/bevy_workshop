@@ -2,13 +2,9 @@ use bevy::prelude::*;
 
 use super::AudioTrigger;
 
-pub struct AudioPlugin;
-
-impl Plugin for AudioPlugin {
-    fn build(&self, app: &mut App) {
-        app.add_event::<AudioTrigger>()
-            .add_systems(Update, play_audio);
-    }
+pub fn audio_plugin(app: &mut App) {
+    app.add_event::<AudioTrigger>()
+        .add_systems(Update, play_audio);
 }
 
 fn play_audio(

@@ -113,12 +113,8 @@ Our new material must be added to Bevy before it can be used. This can be done i
 # #[derive(Asset, TypePath, AsBindGroup, Debug, Clone)]
 # pub struct FlagMaterial {}
 # impl Material2d for FlagMaterial {}
-pub struct FlagPlugin;
-
-impl Plugin for FlagPlugin {
-    fn build(&self, app: &mut App) {
-        app.add_plugins(Material2dPlugin::<FlagMaterial>::default());
-    }
+fn flag_plugin(app: &mut App) {
+    app.add_plugins(Material2dPlugin::<FlagMaterial>::default());
 }
 ```
 

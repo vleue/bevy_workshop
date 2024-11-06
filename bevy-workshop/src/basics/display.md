@@ -8,12 +8,8 @@ We'll just display block of colors for now, as a placeholder. Red is the player,
 # enum GameState { #[default] Game }
 use bevy::prelude::*;
 
-pub struct GamePlugin;
-
-impl Plugin for GamePlugin {
-    fn build(&self, app: &mut App) {
-        app.add_systems(OnEnter(GameState::Game), display_level);
-    }
+fn game_plugin(app: &mut App) {
+    app.add_systems(OnEnter(GameState::Game), display_level);
 }
 
 #[derive(Component)]

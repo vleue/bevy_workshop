@@ -4,12 +4,8 @@ use bevy::{
 };
 use thiserror::Error;
 
-pub struct LevelLoaderPlugin;
-
-impl Plugin for LevelLoaderPlugin {
-    fn build(&self, app: &mut App) {
-        app.init_asset::<Level>().init_asset_loader::<LevelLoader>();
-    }
+pub fn level_loader_plugin(app: &mut App) {
+    app.init_asset::<Level>().init_asset_loader::<LevelLoader>();
 }
 
 #[derive(Resource)]

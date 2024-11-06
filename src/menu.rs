@@ -2,13 +2,9 @@ use bevy::{color::palettes::tailwind, prelude::*};
 
 use crate::GameState;
 
-pub struct MenuPlugin;
-
-impl Plugin for MenuPlugin {
-    fn build(&self, app: &mut App) {
-        app.add_systems(OnEnter(GameState::Menu), display_menu)
-            .add_systems(Update, button_system.run_if(in_state(GameState::Menu)));
-    }
+pub fn menu_plugin(app: &mut App) {
+    app.add_systems(OnEnter(GameState::Menu), display_menu)
+        .add_systems(Update, button_system.run_if(in_state(GameState::Menu)));
 }
 
 fn display_menu(mut commands: Commands) {

@@ -18,10 +18,10 @@ fn main() {
         .init_state::<GameState>()
         .enable_state_scoped_entities::<GameState>()
         .add_plugins((
-            splash::SplashPlugin,
-            level_loader::LevelLoaderPlugin,
-            menu::MenuPlugin,
-            game::GamePlugin,
+            splash::splash_plugin,
+            level_loader::level_loader_plugin,
+            menu::menu_plugin,
+            game::game_plugin,
         ))
         .run();
 }

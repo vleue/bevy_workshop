@@ -84,3 +84,33 @@ mod splash {
     }
 }
 ```
+
+For plugins that don't use any configuration, it's possible to expose the build function directly, and use it as a plugin:
+
+```rust,no_run
+# extern crate bevy;
+# use bevy::prelude::*;
+# #[derive(Debug, Clone, Copy, Eq, PartialEq, Hash, States, Default)]
+# enum GameState {
+#     #[default]
+#     Splash,
+# }
+fn main() {
+    App::new()
+        // ...
+        .add_plugins(splash::splash_plugin)           // adding our new plugin
+        .run();
+}
+
+mod splash {
+    # use bevy::prelude::*;
+    # use crate::GameState;
+    # fn display_title() {}
+    # fn load_assets() {}
+    # fn switch_to_menu() {}
+    pub fn splash_plugin(app: &mut App) {
+        app.add_systems(OnEnter(GameState::Splash), (display_title, load_assets))
+            .add_systems(Update, switch_to_menu.run_if(in_state(GameState::Splash)));
+    }
+}
+```

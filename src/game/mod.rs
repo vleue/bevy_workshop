@@ -14,17 +14,17 @@ mod player;
 
 const SCALE: f32 = 0.5;
 
-pub struct GamePlugin;
-
-impl Plugin for GamePlugin {
-    fn build(&self, app: &mut App) {
-        app.add_plugins((player::PlayerPlugin, audio::AudioPlugin, flag::FlagPlugin))
-            .add_systems(OnEnter(GameState::Game), display_level)
-            .add_systems(
-                Update,
-                animate_level.run_if(on_timer(Duration::from_secs_f32(0.25))),
-            );
-    }
+pub fn game_plugin(app: &mut App) {
+    app.add_plugins((
+        player::player_plugin,
+        audio::audio_plugin,
+        flag::flag_plugin,
+    ))
+    .add_systems(OnEnter(GameState::Game), display_level)
+    .add_systems(
+        Update,
+        animate_level.run_if(on_timer(Duration::from_secs_f32(0.25))),
+    );
 }
 
 #[derive(Component)]
