@@ -11,6 +11,12 @@
 	"forwardPorts": [
 		4000
 	],
+	"portsAttributes": {
+		"4000": {
+			"label": "wasm preview",
+			"onAutoForward": "openBrowser"
+		}
+	},
 	"postAttachCommand": {
 		"server": "basic-http-server wasm",
 		"watcher": "cargo watch --ignore wasm --shell 'cargo build --release --target wasm32-unknown-unknown && wasm-bindgen --out-dir wasm --out-name workshop --target web target/wasm32-unknown-unknown/release/bevy_workshop.wasm'"
