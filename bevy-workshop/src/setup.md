@@ -33,7 +33,7 @@ This option can be interesting if you can't install dependencies on your machine
 #### Run a docker image from scratch
 
 ```sh
-docker run -v `pwd`:/workspace -p 4000:4000 rust:1.82-bullseye
+docker run -it -v `pwd`:/workspace -p 4000:4000 rust:1.82-bullseye /bin/bash
 rustup target add wasm32-unknown-unknown
 # install cargo binstall
 curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
@@ -51,7 +51,8 @@ cargo build --release --target wasm32-unknown-unknown && wasm-bindgen --out-dir 
 
 It will be a bigger initial download but the first build is already done
 ```sh
-docker run -v `pwd`:/workspace -p 4000:4000 ghcr.io/vleue/bevy_workshop:main
+docker run -it -v `pwd`:/workspace -p 4000:4000 ghcr.io/vleue/bevy_workshop:main /bin/bash
+cp -r bevy_workshop/target workspace/target
 ```
 
 ### Option 3: Use GitHub Codespace
