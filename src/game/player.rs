@@ -5,7 +5,7 @@ use bevy::{
 
 use crate::GameState;
 
-use super::{AgainstWall, AudioTrigger, Flag, Ground, IsOnGround, Player, ReachedFlag, Velocity};
+use super::{AgainstWall, Flag, Ground, IsOnGround, Player, ReachedFlag, Velocity};
 
 pub fn player_plugin(app: &mut App) {
     app.add_systems(
@@ -27,7 +27,6 @@ fn control_player(
     keyboard_input: Res<ButtonInput<KeyCode>>,
     mut player: Query<(&mut Velocity, &IsOnGround), With<Player>>,
     time: Res<Time>,
-    mut audio_triggers: EventWriter<AudioTrigger>,
 ) {
     let (mut velocity, is_on_ground) = player.single_mut();
     if time.elapsed_secs() - is_on_ground.0 < 2.0 || velocity.jumping > 0.0 {
@@ -40,9 +39,6 @@ fn control_player(
         }
     }
     if time.elapsed_secs() - is_on_ground.0 < 0.5 && keyboard_input.pressed(KeyCode::Space) {
-        if velocity.jumping == 0.0 {
-            audio_triggers.send(AudioTrigger::Jump);
-        }
         velocity.jumping = 15.0;
     }
 }

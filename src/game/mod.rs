@@ -7,13 +7,12 @@ use crate::{
     GameAssets, GameState,
 };
 
-mod audio;
 mod player;
 
 const SCALE: f32 = 0.5;
 
 pub fn game_plugin(app: &mut App) {
-    app.add_plugins((player::player_plugin, audio::audio_plugin))
+    app.add_plugins(player::player_plugin)
         .add_systems(OnEnter(GameState::Game), display_level)
         .add_systems(
             Update,
@@ -150,9 +149,4 @@ fn animate_level(mut flags: Query<&mut Sprite, With<Flag>>) {
 
 fn reached_flag(_trigger: Trigger<ReachedFlag>, mut next: ResMut<NextState<GameState>>) {
     next.set(GameState::Menu);
-}
-
-#[derive(Event)]
-enum AudioTrigger {
-    Jump,
 }
