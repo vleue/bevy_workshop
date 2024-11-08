@@ -1,5 +1,13 @@
 # Exercises
 
+Don't forget to checkout the branch:
+
+```sh
+git checkout 08-action-zones
+```
+
+Let's review what was changed: <https://github.com/vleue/bevy_workshop/compare/08-action-zones...07-level-loading>
+
 ## Use Fixed Z Indexes
 
 Use fixed values for the z indexes so that the game renders the same every time.

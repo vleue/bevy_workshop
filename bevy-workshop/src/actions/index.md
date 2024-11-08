@@ -7,3 +7,8 @@ You will learn how to:
 * Implement the logic for triggering actions
 * Integrate them into your game to enhance interactivity and gameplay dynamics
 
+Checkout the branch:
+
+```sh
+git checkout 08-action-zones
+```

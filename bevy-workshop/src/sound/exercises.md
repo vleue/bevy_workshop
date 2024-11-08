@@ -1,5 +1,13 @@
 # Exercises
 
+Don't forget to checkout the branch:
+
+```sh
+git checkout 09-sound-effects
+```
+
+Let's review what was changed: <https://github.com/vleue/bevy_workshop/compare/09-sound-effects...08-action-zones>
+
 ## Other Events
 
 Add sound for game start, winning and losing.

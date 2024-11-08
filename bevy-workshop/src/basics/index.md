@@ -6,3 +6,9 @@ You will:
 * Load, display, and animate sprites
 * React to user input
 * Query entities and components in more complex scenarios
+
+Checkout the branch:
+
+```sh
+git checkout 06-basic-game
+```

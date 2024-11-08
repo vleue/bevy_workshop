@@ -6,3 +6,9 @@ Bevy offers several abstractions to render things on screen:
 * Directly using images or colors or texture atlas, which is what we've been doing until now. The shaders are built-in Bevy, and use as many optimisation as possible at the cost of customisation.
 * Custom materials, which we'll explore in this section. For 2d, you'll need to implement the [`Material2d`](https://docs.rs/bevy/0.15.0-rc.3/bevy/sprite/trait.Material2d.html) trait.
 * Lower level abstractions, down to complete control on the whole rendering pipeline. This won't be in this workshop.
+
+Checkout the branch:
+
+```sh
+git checkout 10-visual-effects
+```

@@ -1,5 +1,7 @@
 # Exercises
 
+Uncomment the gravity system so that it affects the player now.
+
 ## Falling to Death
 
 Make the game go back to the menu when the player fall offscreen.

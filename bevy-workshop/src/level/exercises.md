@@ -1,5 +1,13 @@
 # Exercises
 
+Don't forget to checkout the branch:
+
+```sh
+git checkout 07-level-loading
+```
+
+Let's review what was changed: <https://github.com/vleue/bevy_workshop/compare/07-level-loading...06-basic-game>
+
 ## Handle the Player Starting Position
 
 Spawn the player where there's a smiley 🙂

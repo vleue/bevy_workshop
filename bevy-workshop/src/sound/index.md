@@ -6,3 +6,9 @@ By the end of this section, you will be able to:
 * Load and manage sound assets
 * Play sound effects in response to game events
 * Control sound properties such as volume and pitch
+
+Checkout the branch:
+
+```sh
+git checkout 09-sound-effects
+```

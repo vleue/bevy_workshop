@@ -1,5 +1,13 @@
 # Exercises
 
+Don't forget to checkout the branch:
+
+```sh
+git checkout 06-basic-game
+```
+
+Let's review what was changed: <https://github.com/vleue/bevy_workshop/compare/06-basic-game...05-intro-to-bevy>
+
 ## Displaying the Ground
 
 File `spritesheet_ground.png` has a spritesheet for the ground. Use it instead of the green box.

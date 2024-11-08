@@ -1,5 +1,13 @@
 # ✍️ Exercises
 
+Don't forget to checkout the branch:
+
+```sh
+git checkout 10-visual-effects
+```
+
+Let's review what was changed: <https://github.com/vleue/bevy_workshop/compare/10-visual-effects...09-sound-effects>
+
 ## Jumping
 
 Let's add a shader displaying an effect when jumping.

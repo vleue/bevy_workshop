@@ -6,3 +6,8 @@ In this section, you will learn how to load and manage levels in your game. This
 * Accessing the asset at runtime
 * Displaying the level based on its file
 
+Checkout the branch:
+
+```sh
+git checkout 07-level-loading
+```
