@@ -6,7 +6,7 @@ Don't forget to checkout the branch:
 git checkout 06-basic-game
 ```
 
-Let's review what was changed: <https://github.com/vleue/bevy_workshop/compare/06-basic-game...05-intro-to-bevy>
+Let's review what was changed: <https://github.com/vleue/bevy_workshop/compare/05-intro-to-bevy..06-basic-game>
 
 ## Displaying the Ground
 

@@ -6,7 +6,7 @@ Don't forget to checkout the branch:
 git checkout 08-action-zones
 ```
 
-Let's review what was changed: <https://github.com/vleue/bevy_workshop/compare/08-action-zones...07-level-loading>
+Let's review what was changed: <https://github.com/vleue/bevy_workshop/compare/07-level-loading..08-action-zones>
 
 ## Use Fixed Z Indexes
 

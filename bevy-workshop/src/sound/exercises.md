@@ -6,7 +6,7 @@ Don't forget to checkout the branch:
 git checkout 09-sound-effects
 ```
 
-Let's review what was changed: <https://github.com/vleue/bevy_workshop/compare/09-sound-effects...08-action-zones>
+Let's review what was changed: <https://github.com/vleue/bevy_workshop/compare/08-action-zones..09-sound-effects>
 
 ## Other Events
 

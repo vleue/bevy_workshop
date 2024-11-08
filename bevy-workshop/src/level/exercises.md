@@ -6,7 +6,7 @@ Don't forget to checkout the branch:
 git checkout 07-level-loading
 ```
 
-Let's review what was changed: <https://github.com/vleue/bevy_workshop/compare/07-level-loading...06-basic-game>
+Let's review what was changed: <https://github.com/vleue/bevy_workshop/compare/06-basic-game..07-level-loading>
 
 ## Handle the Player Starting Position
 

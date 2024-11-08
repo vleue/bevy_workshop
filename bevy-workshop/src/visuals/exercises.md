@@ -6,7 +6,7 @@ Don't forget to checkout the branch:
 git checkout 10-visual-effects
 ```
 
-Let's review what was changed: <https://github.com/vleue/bevy_workshop/compare/10-visual-effects...09-sound-effects>
+Let's review what was changed: <https://github.com/vleue/bevy_workshop/compare/09-sound-effects..10-visual-effects>
 
 ## Jumping
 
