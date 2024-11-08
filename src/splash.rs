@@ -1,9 +1,9 @@
 use bevy::prelude::*;
 
-use crate::{GameAssets, GameState};
+use crate::GameState;
 
 pub fn splash_plugin(app: &mut App) {
-    app.add_systems(OnEnter(GameState::Splash), (display_title, load_assets))
+    app.add_systems(OnEnter(GameState::Splash), display_title)
         .add_systems(Update, switch_to_menu.run_if(in_state(GameState::Splash)));
 }
 
@@ -46,21 +46,4 @@ fn switch_to_menu(
     if timer.0.tick(time.delta()).just_finished() {
         next.set(GameState::Menu);
     }
-}
-
-fn load_assets(
-    mut commands: Commands,
-    asset_server: Res<AssetServer>,
-    mut texture_atlas_layouts: ResMut<Assets<TextureAtlasLayout>>,
-) {
-    commands.insert_resource(GameAssets {
-        player_image: asset_server.load("spritesheet_players.png"),
-        player_layout: texture_atlas_layouts.add(TextureAtlasLayout::from_grid(
-            UVec2::new(128, 256),
-            7,
-            8,
-            None,
-            None,
-        )),
-    });
 }
