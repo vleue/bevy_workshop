@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 
-use crate::{level_loader::LoadedLevel, GameAssets, GameState};
+use crate::{GameAssets, GameState};
 
 pub fn splash_plugin(app: &mut App) {
     app.add_systems(OnEnter(GameState::Splash), (display_title, load_assets))
@@ -53,21 +53,10 @@ fn load_assets(
     asset_server: Res<AssetServer>,
     mut texture_atlas_layouts: ResMut<Assets<TextureAtlasLayout>>,
 ) {
-    commands.insert_resource(LoadedLevel {
-        level: asset_server.load("level.bw"),
-    });
     commands.insert_resource(GameAssets {
         player_image: asset_server.load("spritesheet_players.png"),
         player_layout: texture_atlas_layouts.add(TextureAtlasLayout::from_grid(
             UVec2::new(128, 256),
-            7,
-            8,
-            None,
-            None,
-        )),
-        ground_image: asset_server.load("spritesheet_ground.png"),
-        ground_layout: texture_atlas_layouts.add(TextureAtlasLayout::from_grid(
-            UVec2::new(128, 128),
             7,
             8,
             None,
