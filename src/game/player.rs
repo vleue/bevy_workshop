@@ -54,7 +54,6 @@ fn on_ground(
     mut player: Query<(&Transform, &mut IsOnGround, &mut AgainstWall), With<Player>>,
     ground: Query<&Transform, (Without<Player>, With<Ground>)>,
     time: Res<Time>,
-    #[cfg(feature = "debug")] mut gizmos: Gizmos,
 ) {
     let mut is_on_ground = false;
     let mut is_against_wall = (false, false);
@@ -71,16 +70,6 @@ fn on_ground(
         ) / 2.0
             * 0.8,
     );
-
-    #[cfg(feature = "debug")]
-    {
-        use bevy::math::bounding::BoundingVolume;
-        gizmos.rect_2d(
-            player_aabb.center(),
-            player_aabb.half_size() * 2.,
-            Color::srgb(1.0, 0.0, 0.0),
-        );
-    }
 
     for ground_transform in &ground {
         let ground_aabb = Aabb2d::new(
