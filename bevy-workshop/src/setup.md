@@ -30,10 +30,32 @@ cargo build
 
 This option can be interesting if you can't install dependencies on your machine, or the setup fails for some obscure reason. Instead of running natively, the workshop will run in your browser using wasm and WebGL2, delegating most OS/hardware integration to the browser.
 
-* Run a docker image
+#### Run a docker image from scratch
 
 ```sh
-docker run -v `pwd`:/workspace -p 8000:8000 rust
+docker run -v `pwd`:/workspace -p 4000:4000 rust:1.82-bullseye
 rustup target add wasm32-unknown-unknown
-python3 -m http.server --directory wasm
+# install cargo binstall
+curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+# install a few helpers
+cargo binstall --no-confirm wasm-bindgen-cli cargo-watch basic-http-server
+
+cd /workspace
+# serve the wasm in the background
+basic-http-server wasm 2> /dev/null &
+# build for wasm
+cargo build --release --target wasm32-unknown-unknown && wasm-bindgen --out-dir wasm --out-name workshop --target web target/wasm32-unknown-unknown/release/bevy_workshop.wasm
 ```
+
+#### Or use a prebuilt docker image
+
+It will be a bigger initial download but the first build is already done
+```sh
+docker run -v `pwd`:/workspace -p 4000:4000 ghcr.io/vleue/bevy_workshop:main
+```
+
+### Option 3: Use GitHub Codespace
+
+Go to <https://github.com/codespaces/new/mockersf/bevy_workshop>, it will use a prebuilt image with everything needed to work in wasm. Increate the number of core as much as you're confortable with.
+
+This option uses more bandwitdh as you'll download the wasm file from the internet on every rebuild.
