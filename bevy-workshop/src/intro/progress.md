@@ -1,5 +1,7 @@
 # Progress Report
 
+Let's review what was done: <https://github.com/vleue/bevy_workshop/compare/before-05..05-intro-to-bevy>
+
 ## What You've learned
 
 * Application creation and adding Bevy default plugins
