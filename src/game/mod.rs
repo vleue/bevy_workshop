@@ -1,7 +1,6 @@
 use std::time::Duration;
 
 use bevy::{prelude::*, time::common_conditions::on_timer};
-use flag::FlagMaterial;
 
 use crate::{
     level_loader::{Level, LoadedLevel, Tile},
@@ -9,22 +8,17 @@ use crate::{
 };
 
 mod audio;
-mod flag;
 mod player;
 
 const SCALE: f32 = 0.5;
 
 pub fn game_plugin(app: &mut App) {
-    app.add_plugins((
-        player::player_plugin,
-        audio::audio_plugin,
-        flag::flag_plugin,
-    ))
-    .add_systems(OnEnter(GameState::Game), display_level)
-    .add_systems(
-        Update,
-        animate_level.run_if(on_timer(Duration::from_secs_f32(0.25))),
-    );
+    app.add_plugins((player::player_plugin, audio::audio_plugin))
+        .add_systems(OnEnter(GameState::Game), display_level)
+        .add_systems(
+            Update,
+            animate_level.run_if(on_timer(Duration::from_secs_f32(0.25))),
+        );
 }
 
 #[derive(Component)]
@@ -73,8 +67,6 @@ fn display_tile(
     y: f32,
     line: &[Tile],
     assets: &GameAssets,
-    meshes: &mut Assets<Mesh>,
-    flag_materials: &mut Assets<FlagMaterial>,
 ) {
     match tile {
         Tile::Ground => {
@@ -109,13 +101,14 @@ fn display_tile(
         Tile::Flag => {
             commands
                 .spawn((
-                    Mesh2d(meshes.add(Rectangle::default())),
-                    MeshMaterial2d(flag_materials.add(FlagMaterial {
-                        atlas: assets.items_image.clone(),
-                        index: Vec4::new(0.0, 1.0, 0.0, 0.0),
-                        distance: Vec4::ZERO,
-                    })),
-                    Transform::from_xyz(x, y, 1.0).with_scale(Vec3::splat(SCALE) * 128.0),
+                    Sprite::from_atlas_image(
+                        assets.items_image.clone(),
+                        TextureAtlas {
+                            layout: assets.items_layout.clone(),
+                            index: 6,
+                        },
+                    ),
+                    Transform::from_xyz(x, y, 1.0).with_scale(Vec3::splat(SCALE)),
                     StateScoped(GameState::Game),
                     Flag,
                 ))
@@ -130,8 +123,6 @@ fn display_level(
     assets: Res<GameAssets>,
     level: Res<LoadedLevel>,
     levels: Res<Assets<Level>>,
-    mut meshes: ResMut<Assets<Mesh>>,
-    mut flag_materials: ResMut<Assets<FlagMaterial>>,
 ) {
     let level = levels.get(&level.level).unwrap();
 
@@ -141,31 +132,18 @@ fn display_level(
                 (i as f32 - 9.0) * 128.0 * SCALE,
                 -(j as f32 - 5.0) * 128.0 * SCALE,
             );
-            display_tile(
-                &mut commands,
-                tile,
-                i,
-                x,
-                y,
-                line,
-                &assets,
-                meshes.as_mut(),
-                flag_materials.as_mut(),
-            );
+            display_tile(&mut commands, tile, i, x, y, line, &assets);
         }
     }
 }
 
-fn animate_level(
-    flags: Query<&MeshMaterial2d<FlagMaterial>, With<Flag>>,
-    mut flag_materials: ResMut<Assets<FlagMaterial>>,
-) {
-    for flag in &flags {
-        let material = flag_materials.get_mut(flag).unwrap();
-        if material.index.y == 1.0 {
-            material.index.y = 2.0;
+fn animate_level(mut flags: Query<&mut Sprite, With<Flag>>) {
+    for mut flag in &mut flags {
+        let atlas = flag.texture_atlas.as_mut().unwrap();
+        if atlas.index == 6 {
+            atlas.index = 12;
         } else {
-            material.index.y = 1.0;
+            atlas.index = 6;
         }
     }
 }
