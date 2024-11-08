@@ -22,8 +22,6 @@ pub struct Level {
 pub enum Tile {
     Empty,
     Ground,
-    Spawn,
-    Flag,
 }
 
 #[derive(Default)]
@@ -56,8 +54,7 @@ impl AssetLoader for LevelLoader {
             match char {
                 '⬜' => line.push(Tile::Empty),
                 '🟩' => line.push(Tile::Ground),
-                '🙂' => line.push(Tile::Spawn),
-                '🏁' => line.push(Tile::Flag),
+                '🙂' => (),
                 '\n' => {
                     tiles.push(line);
                     line = vec![];

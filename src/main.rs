@@ -40,6 +40,4 @@ struct GameAssets {
     player_layout: Handle<TextureAtlasLayout>,
     ground_image: Handle<Image>,
     ground_layout: Handle<TextureAtlasLayout>,
-    items_image: Handle<Image>,
-    items_layout: Handle<TextureAtlasLayout>,
 }

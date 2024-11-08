@@ -1,6 +1,4 @@
-use std::time::Duration;
-
-use bevy::{prelude::*, time::common_conditions::on_timer};
+use bevy::prelude::*;
 
 use crate::{
     level_loader::{Level, LoadedLevel, Tile},
@@ -13,11 +11,7 @@ const SCALE: f32 = 0.5;
 
 pub fn game_plugin(app: &mut App) {
     app.add_plugins(player::player_plugin)
-        .add_systems(OnEnter(GameState::Game), display_level)
-        .add_systems(
-            Update,
-            animate_level.run_if(on_timer(Duration::from_secs_f32(0.25))),
-        );
+        .add_systems(OnEnter(GameState::Game), display_level);
 }
 
 #[derive(Component)]
@@ -39,12 +33,6 @@ struct Velocity {
 
 #[derive(Component)]
 struct Ground;
-
-#[derive(Component)]
-struct Flag;
-
-#[derive(Event)]
-struct ReachedFlag;
 
 fn ground_tile_index(line: &[Tile], i: usize) -> usize {
     match (
@@ -83,36 +71,6 @@ fn display_tile(
                 StateScoped(GameState::Game),
             ));
         }
-        Tile::Spawn => {
-            commands.spawn((
-                Sprite::from_atlas_image(
-                    assets.player_image.clone(),
-                    TextureAtlas {
-                        layout: assets.player_layout.clone(),
-                        index: 0,
-                    },
-                ),
-                Transform::from_xyz(x, y + 256.0 / 4.0 * SCALE, 2.0).with_scale(Vec3::splat(SCALE)),
-                StateScoped(GameState::Game),
-                Player,
-            ));
-        }
-        Tile::Flag => {
-            commands
-                .spawn((
-                    Sprite::from_atlas_image(
-                        assets.items_image.clone(),
-                        TextureAtlas {
-                            layout: assets.items_layout.clone(),
-                            index: 6,
-                        },
-                    ),
-                    Transform::from_xyz(x, y, 1.0).with_scale(Vec3::splat(SCALE)),
-                    StateScoped(GameState::Game),
-                    Flag,
-                ))
-                .observe(reached_flag);
-        }
         Tile::Empty => {}
     }
 }
@@ -134,19 +92,17 @@ fn display_level(
             display_tile(&mut commands, tile, i, x, y, line, &assets);
         }
     }
-}
 
-fn animate_level(mut flags: Query<&mut Sprite, With<Flag>>) {
-    for mut flag in &mut flags {
-        let atlas = flag.texture_atlas.as_mut().unwrap();
-        if atlas.index == 6 {
-            atlas.index = 12;
-        } else {
-            atlas.index = 6;
-        }
-    }
-}
-
-fn reached_flag(_trigger: Trigger<ReachedFlag>, mut next: ResMut<NextState<GameState>>) {
-    next.set(GameState::Menu);
+    commands.spawn((
+        Sprite::from_atlas_image(
+            assets.player_image.clone(),
+            TextureAtlas {
+                layout: assets.player_layout.clone(),
+                index: 0,
+            },
+        ),
+        Transform::from_xyz(0.0, 200.0, 0.0).with_scale(Vec3::splat(0.5)),
+        StateScoped(GameState::Game),
+        Player,
+    ));
 }
