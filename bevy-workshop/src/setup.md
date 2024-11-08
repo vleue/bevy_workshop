@@ -51,7 +51,7 @@ cargo build --release --target wasm32-unknown-unknown && wasm-bindgen --out-dir 
 
 It will be a bigger initial download but the first build is already done
 ```sh
-docker run -it -v `pwd`:/workspace -p 4000:4000 ghcr.io/vleue/bevy_workshop:main /bin/bash
+docker run -it -v `pwd`:/workspace -p 4000:4000 ghcr.io/vleue/bevy_workshop /bin/bash
 cp -r bevy_workshop/target workspace/target
 ```
 
