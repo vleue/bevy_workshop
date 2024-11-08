@@ -12,5 +12,5 @@
 ## Going Further
 
 The level format we've done is good for a quick game but is limited. You should either:
-* Use an existing level editor, like [LDtk](https://ldtk.io) (Level Designer toolkit), which is very powerful and is supported in Bevy through third party plugins
+* Use an existing level editor, like [LDtk](https://ldtk.io) (Level Designer toolkit) or [Tiled](https://www.mapeditor.org), which are very powerful and supported in Bevy through third party plugins
 * Or build your own, that will allow you to include specific features for your game
