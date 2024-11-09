@@ -13,4 +13,4 @@
 
 ## Going Further
 
-Shaders and rendering is a *very big* domain.
+Shaders and rendering is a *very big* domain. You can start by reading the [Book of Shaders](https://thebookofshaders.com) and the [Learn WGPU](https://sotrh.github.io/learn-wgpu/) tutorial.
