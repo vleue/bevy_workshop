@@ -57,6 +57,6 @@ cp -r bevy_workshop/target workspace/target
 
 ### Option 3: Use GitHub Codespace
 
-Go to <https://github.com/codespaces/new/mockersf/bevy_workshop>, it will use a prebuilt image with everything needed to work in wasm. Increate the number of core as much as you're confortable with. GitHub free tier of codespace is 120 core hour, so with an 8-core machine you'll have 15 hours.
+Go to <https://github.com/codespaces/new/mockersf/bevy_workshop>, it will use a prebuilt image with everything needed to work in wasm. Increate the number of core as much as you're confortable with. GitHub free tier of codespace is 120 core-hours per month, so with an 8-core machine you'll have 15 hours.
 
 This option uses more bandwidth as you'll download the wasm file from the internet on every rebuild.
