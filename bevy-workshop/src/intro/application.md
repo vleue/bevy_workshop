@@ -4,6 +4,14 @@ The initial goal is to open a window using Bevy!
 
 ## Empty Application
 
+Let's start a new project with Bevy
+
+```sh
+cargo new bevy_workshop
+cd bevy_workshop
+cargo add bevy@0.15.0-rc.3
+```
+
 This is the most basic Bevy application. It will exit immediately upon running and perform no actions.
 
 ```rust
