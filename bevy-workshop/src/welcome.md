@@ -2,6 +2,8 @@
 
 This is an introduction workshop for the [Bevy Engine](https://bevyengine.org).
 
+You can find it at <https://vleue.github.io/bevy_workshop/>
+
 At the end, you should have an overview of how Bevy works, and a simple 2d platformer.
 
 ## Target Audience
