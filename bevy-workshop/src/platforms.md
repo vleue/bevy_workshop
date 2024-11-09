@@ -7,7 +7,7 @@ Crossbuilding?
 ## wasm
 
 * Build steps
-    * wasmbindgen-cli
+    * wasm-bindgen-cli
 * WebGL2 or WebGPU
 * HTML template
     * with audio trick

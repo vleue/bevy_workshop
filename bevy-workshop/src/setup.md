@@ -52,7 +52,15 @@ cargo build --release --target wasm32-unknown-unknown && wasm-bindgen --out-dir 
 It will be a bigger initial download but the first build is already done
 ```sh
 docker run -it -v `pwd`:/workspace -p 4000:4000 ghcr.io/vleue/bevy_workshop /bin/bash
-cp -r bevy_workshop/target workspace/target
+
+# Copy the prebuilt target folder
+cp -r bevy_workshop/target /workspace/target
+
+cd /workspace
+# serve the wasm in the background
+basic-http-server wasm 2> /dev/null &
+# build for wasm
+cargo build --release --target wasm32-unknown-unknown && wasm-bindgen --out-dir wasm --out-name workshop --target web target/wasm32-unknown-unknown/release/bevy_workshop.wasm
 ```
 
 ### Option 3: Use GitHub Codespace
