@@ -40,6 +40,10 @@ Don't forget to add the new `game_plugin` to the app in the `main.rs` file.
 
 </div>
 
+## First Custom Component
+
+A component is a Rust type, a struct or an enum, that implement the `Component` trait. It can be derived.
+
 ## Tag Components
 
 Tag components, or markers, are Zero Sized Types (ZST) used to mark an entity for easier query. Zero Sized Types are types that have only one value possible, and offers optimisations in Rust.
