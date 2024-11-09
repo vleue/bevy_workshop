@@ -39,4 +39,4 @@ Tips:
 
 ## Juice it up!
 
-Enemies are several sprites, use them to show an animation. Add audio effects when they collide with the player. Use a visual effect to change their look when they get killed.
+Enemies are several sprites, use them to show an animation. Add audio effects when they collide with the player. Use a visual effect to change their look when they get killed. Add more kind of enemies!
