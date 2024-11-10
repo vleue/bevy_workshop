@@ -12,7 +12,7 @@ pub fn player_plugin(app: &mut App) {
         FixedUpdate,
         (
             control_player,
-            // Uncommend to following line after you've done the exercises 6.4 to have srpites for the ground
+            // Uncomment the following line after you've done the exercises 6.4 to have sprites for the ground
             // gravity
         )
             .run_if(in_state(GameState::Game)),
